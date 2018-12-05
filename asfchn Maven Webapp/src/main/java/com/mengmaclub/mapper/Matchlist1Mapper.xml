@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.Matchlist1Mapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Matchlist1">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="isconfirm" jdbcType="INTEGER" property="isconfirm" />
+    <result column="peopleId" jdbcType="INTEGER" property="peopleid" />
+    <result column="peoplename" jdbcType="VARCHAR" property="peoplename" />
+    <result column="refereeid" jdbcType="INTEGER" property="refereeid" />
+    <result column="turn" jdbcType="INTEGER" property="turn" />
+    <result column="score1" jdbcType="VARCHAR" property="score1" />
+    <result column="score2" jdbcType="VARCHAR" property="score2" />
+    <result column="score3" jdbcType="VARCHAR" property="score3" />
+    <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="teamid" jdbcType="INTEGER" property="teamid" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="jointeamid" jdbcType="INTEGER" property="jointeamid" />
+    <result column="jointeamname" jdbcType="VARCHAR" property="jointeamname" />
+    <result column="peoplesn" jdbcType="VARCHAR" property="peoplesn" />
+    <result column="score21" jdbcType="VARCHAR" property="score21" />
+    <result column="score22" jdbcType="VARCHAR" property="score22" />
+    <result column="score23" jdbcType="VARCHAR" property="score23" />
+    <result column="score31" jdbcType="VARCHAR" property="score31" />
+    <result column="score32" jdbcType="VARCHAR" property="score32" />
+    <result column="score33" jdbcType="VARCHAR" property="score33" />
+    <result column="score41" jdbcType="VARCHAR" property="score41" />
+    <result column="score42" jdbcType="VARCHAR" property="score42" />
+    <result column="score43" jdbcType="VARCHAR" property="score43" />
+    <result column="score51" jdbcType="VARCHAR" property="score51" />
+    <result column="score52" jdbcType="VARCHAR" property="score52" />
+    <result column="score53" jdbcType="VARCHAR" property="score53" />
+    <result column="score61" jdbcType="VARCHAR" property="score61" />
+    <result column="score62" jdbcType="VARCHAR" property="score62" />
+    <result column="score63" jdbcType="VARCHAR" property="score63" />
+    <result column="score71" jdbcType="VARCHAR" property="score71" />
+    <result column="score72" jdbcType="VARCHAR" property="score72" />
+    <result column="score73" jdbcType="VARCHAR" property="score73" />
+    <result column="score81" jdbcType="VARCHAR" property="score81" />
+    <result column="score82" jdbcType="VARCHAR" property="score82" />
+    <result column="score83" jdbcType="VARCHAR" property="score83" />
+    <result column="score91" jdbcType="VARCHAR" property="score91" />
+    <result column="score92" jdbcType="VARCHAR" property="score92" />
+    <result column="score93" jdbcType="VARCHAR" property="score93" />
+    <result column="score101" jdbcType="VARCHAR" property="score101" />
+    <result column="score102" jdbcType="VARCHAR" property="score102" />
+    <result column="score103" jdbcType="VARCHAR" property="score103" />
+    <result column="score111" jdbcType="VARCHAR" property="score111" />
+    <result column="score112" jdbcType="VARCHAR" property="score112" />
+    <result column="score113" jdbcType="VARCHAR" property="score113" />
+    <result column="score121" jdbcType="VARCHAR" property="score121" />
+    <result column="score122" jdbcType="VARCHAR" property="score122" />
+    <result column="score123" jdbcType="VARCHAR" property="score123" />
+    <result column="score131" jdbcType="VARCHAR" property="score131" />
+    <result column="score132" jdbcType="VARCHAR" property="score132" />
+    <result column="score133" jdbcType="VARCHAR" property="score133" />
+    <result column="score141" jdbcType="VARCHAR" property="score141" />
+    <result column="score142" jdbcType="VARCHAR" property="score142" />
+    <result column="score143" jdbcType="VARCHAR" property="score143" />
+    <result column="score151" jdbcType="VARCHAR" property="score151" />
+    <result column="score152" jdbcType="VARCHAR" property="score152" />
+    <result column="score153" jdbcType="VARCHAR" property="score153" />
+    <result column="score161" jdbcType="VARCHAR" property="score161" />
+    <result column="score162" jdbcType="VARCHAR" property="score162" />
+    <result column="score163" jdbcType="VARCHAR" property="score163" />
+    <result column="score171" jdbcType="VARCHAR" property="score171" />
+    <result column="score172" jdbcType="VARCHAR" property="score172" />
+    <result column="score173" jdbcType="VARCHAR" property="score173" />
+    <result column="score181" jdbcType="VARCHAR" property="score181" />
+    <result column="score182" jdbcType="VARCHAR" property="score182" />
+    <result column="score183" jdbcType="VARCHAR" property="score183" />
+    <result column="score191" jdbcType="VARCHAR" property="score191" />
+    <result column="score192" jdbcType="VARCHAR" property="score192" />
+    <result column="score193" jdbcType="VARCHAR" property="score193" />
+    <result column="score201" jdbcType="VARCHAR" property="score201" />
+    <result column="score202" jdbcType="VARCHAR" property="score202" />
+    <result column="score203" jdbcType="VARCHAR" property="score203" />
+    <result column="score211" jdbcType="VARCHAR" property="score211" />
+    <result column="score212" jdbcType="VARCHAR" property="score212" />
+    <result column="score213" jdbcType="VARCHAR" property="score213" />
+    <result column="score221" jdbcType="VARCHAR" property="score221" />
+    <result column="score222" jdbcType="VARCHAR" property="score222" />
+    <result column="score223" jdbcType="VARCHAR" property="score223" />
+    <result column="score231" jdbcType="VARCHAR" property="score231" />
+    <result column="score232" jdbcType="VARCHAR" property="score232" />
+    <result column="score233" jdbcType="VARCHAR" property="score233" />
+    <result column="score241" jdbcType="VARCHAR" property="score241" />
+    <result column="score242" jdbcType="VARCHAR" property="score242" />
+    <result column="score243" jdbcType="VARCHAR" property="score243" />
+    <result column="score251" jdbcType="VARCHAR" property="score251" />
+    <result column="score252" jdbcType="VARCHAR" property="score252" />
+    <result column="score253" jdbcType="VARCHAR" property="score253" />
+    <result column="score261" jdbcType="VARCHAR" property="score261" />
+    <result column="score262" jdbcType="VARCHAR" property="score262" />
+    <result column="score263" jdbcType="VARCHAR" property="score263" />
+    <result column="score271" jdbcType="VARCHAR" property="score271" />
+    <result column="score272" jdbcType="VARCHAR" property="score272" />
+    <result column="score273" jdbcType="VARCHAR" property="score273" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,isconfirm, peopleId, peoplename, refereeid, turn, score1, score2, score3, addTime, teamid, 
+    teamname, jointeamid, jointeamname, peoplesn, score21, score22, score23, score31, 
+    score32, score33, score41, score42, score43, score51, score52, score53, score61, 
+    score62, score63, score71, score72, score73, score81, score82, score83, score91, 
+    score92, score93, score101, score102, score103, score111, score112, score113, score121, 
+    score122, score123, score131, score132, score133, score141, score142, score143, score151, 
+    score152, score153, score161, score162, score163, score171, score172, score173, score181, 
+    score182, score183, score191, score192, score193, score201, score202, score203, score211, 
+    score212, score213, score221, score222, score223, score231, score232, score233,score241,score242,score243,
+    score251,score252,score253,score261,score262,score263,score271,score272,score273
+  </sql>
+  
+
+   <select id="listpeoplefindBypeopleid" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Matchlist1">
+  SELECT * FROM matchlist1 where peopleId=#{id,jdbcType=INTEGER}
+  </select>
+  <select id="findByPeople" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Matchlist1">
+   SELECT * FROM matchlist1 where peopleId=#{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from matchlist1
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from matchlist1
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <select id="findAll" resultType="com.mengmaclub.model.Matchlist1">
+  select * from matchlist1
+  
+  </select>
+  <insert id="insert" parameterType="com.mengmaclub.model.Matchlist1">
+    insert into matchlist1 (id, isconfirm,peopleId, peoplename, 
+      refereeid, turn, score1, 
+      score2, score3, addTime, 
+      teamid, teamname, jointeamid, 
+      jointeamname, peoplesn, score21, 
+      score22, score23, score31, 
+      score32, score33, score41, 
+      score42, score43, score51, 
+      score52, score53, score61, 
+      score62, score63, score71, 
+      score72, score73, score81, 
+      score82, score83, score91, 
+      score92, score93, score101, 
+      score102, score103, score111, 
+      score112, score113, score121, 
+      score122, score123, score131, 
+      score132, score133, score141, 
+      score142, score143, score151, 
+      score152, score153, score161, 
+      score162, score163, score171, 
+      score172, score173, score181, 
+      score182, score183, score191, 
+      score192, score193, score201, 
+      score202, score203, score211, 
+      score212, score213, score221, 
+      score222, score223, score231, 
+      score232, score233,score241,score242,score243,
+    score251,score252,score253,score261,score262,score263,score271,score272,score273,
+      
+      )
+    values (#{id,jdbcType=INTEGER},#{isconfirm,jdbcType=INTEGER},  #{peopleid,jdbcType=INTEGER}, #{peoplename,jdbcType=VARCHAR}, 
+      #{refereeid,jdbcType=INTEGER}, #{turn,jdbcType=INTEGER}, #{score1,jdbcType=VARCHAR}, 
+      #{score2,jdbcType=VARCHAR}, #{score3,jdbcType=VARCHAR}, #{addtime,jdbcType=TIMESTAMP}, 
+      #{teamid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{jointeamid,jdbcType=INTEGER}, 
+      #{jointeamname,jdbcType=VARCHAR}, #{peoplesn,jdbcType=VARCHAR}, #{score21,jdbcType=VARCHAR}, 
+      #{score22,jdbcType=VARCHAR}, #{score23,jdbcType=VARCHAR}, #{score31,jdbcType=VARCHAR}, 
+      #{score32,jdbcType=VARCHAR}, #{score33,jdbcType=VARCHAR}, #{score41,jdbcType=VARCHAR}, 
+      #{score42,jdbcType=VARCHAR}, #{score43,jdbcType=VARCHAR}, #{score51,jdbcType=VARCHAR}, 
+      #{score52,jdbcType=VARCHAR}, #{score53,jdbcType=VARCHAR}, #{score61,jdbcType=VARCHAR}, 
+      #{score62,jdbcType=VARCHAR}, #{score63,jdbcType=VARCHAR}, #{score71,jdbcType=VARCHAR}, 
+      #{score72,jdbcType=VARCHAR}, #{score73,jdbcType=VARCHAR}, #{score81,jdbcType=VARCHAR}, 
+      #{score82,jdbcType=VARCHAR}, #{score83,jdbcType=VARCHAR}, #{score91,jdbcType=VARCHAR}, 
+      #{score92,jdbcType=VARCHAR}, #{score93,jdbcType=VARCHAR}, #{score101,jdbcType=VARCHAR}, 
+      #{score102,jdbcType=VARCHAR}, #{score103,jdbcType=VARCHAR}, #{score111,jdbcType=VARCHAR}, 
+      #{score112,jdbcType=VARCHAR}, #{score113,jdbcType=VARCHAR}, #{score121,jdbcType=VARCHAR}, 
+      #{score122,jdbcType=VARCHAR}, #{score123,jdbcType=VARCHAR}, #{score131,jdbcType=VARCHAR}, 
+      #{score132,jdbcType=VARCHAR}, #{score133,jdbcType=VARCHAR}, #{score141,jdbcType=VARCHAR}, 
+      #{score142,jdbcType=VARCHAR}, #{score143,jdbcType=VARCHAR}, #{score151,jdbcType=VARCHAR}, 
+      #{score152,jdbcType=VARCHAR}, #{score153,jdbcType=VARCHAR}, #{score161,jdbcType=VARCHAR}, 
+      #{score162,jdbcType=VARCHAR}, #{score163,jdbcType=VARCHAR}, #{score171,jdbcType=VARCHAR}, 
+      #{score172,jdbcType=VARCHAR}, #{score173,jdbcType=VARCHAR}, #{score181,jdbcType=VARCHAR}, 
+      #{score182,jdbcType=VARCHAR}, #{score183,jdbcType=VARCHAR}, #{score191,jdbcType=VARCHAR}, 
+      #{score192,jdbcType=VARCHAR}, #{score193,jdbcType=VARCHAR}, #{score201,jdbcType=VARCHAR}, 
+      #{score202,jdbcType=VARCHAR}, #{score203,jdbcType=VARCHAR}, #{score211,jdbcType=VARCHAR}, 
+      #{score212,jdbcType=VARCHAR}, #{score213,jdbcType=VARCHAR}, #{score221,jdbcType=VARCHAR}, 
+      #{score222,jdbcType=VARCHAR}, #{score223,jdbcType=VARCHAR},#{score231,jdbcType=VARCHAR}, 
+      #{score232,jdbcType=VARCHAR}, #{score233,jdbcType=VARCHAR}), #{score241,jdbcType=VARCHAR}, #{score242,jdbcType=VARCHAR})
+       #{score243,jdbcType=VARCHAR}, #{score251,jdbcType=VARCHAR}), #{score252,jdbcType=VARCHAR}, #{score253,jdbcType=VARCHAR}),
+       , #{score261,jdbcType=VARCHAR}), #{score262,jdbcType=VARCHAR}, #{score263,jdbcType=VARCHAR}), #{score271,jdbcType=VARCHAR}), #{score272,jdbcType=VARCHAR}, #{score273,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Matchlist1">
+    insert into matchlist1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isconfirm != null">
+        isconfirm,
+      </if>
+      <if test="peopleid != null">
+        peopleId,
+      </if>
+      <if test="peoplename != null">
+        peoplename,
+      </if>
+      <if test="refereeid != null">
+        refereeid,
+      </if>
+      <if test="turn != null">
+        turn,
+      </if>
+      <if test="score1 != null">
+        score1,
+      </if>
+      <if test="score2 != null">
+        score2,
+      </if>
+      <if test="score3 != null">
+        score3,
+      </if>
+      <if test="addtime != null">
+        addTime,
+      </if>
+      <if test="teamid != null">
+        teamid,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+      <if test="jointeamid != null">
+        jointeamid,
+      </if>
+      <if test="jointeamname != null">
+        jointeamname,
+      </if>
+      <if test="peoplesn != null">
+        peoplesn,
+      </if>
+      <if test="score21 != null">
+        score21,
+      </if>
+      <if test="score22 != null">
+        score22,
+      </if>
+      <if test="score23 != null">
+        score23,
+      </if>
+      <if test="score31 != null">
+        score31,
+      </if>
+      <if test="score32 != null">
+        score32,
+      </if>
+      <if test="score33 != null">
+        score33,
+      </if>
+      <if test="score41 != null">
+        score41,
+      </if>
+      <if test="score42 != null">
+        score42,
+      </if>
+      <if test="score43 != null">
+        score43,
+      </if>
+      <if test="score51 != null">
+        score51,
+      </if>
+      <if test="score52 != null">
+        score52,
+      </if>
+      <if test="score53 != null">
+        score53,
+      </if>
+      <if test="score61 != null">
+        score61,
+      </if>
+      <if test="score62 != null">
+        score62,
+      </if>
+      <if test="score63 != null">
+        score63,
+      </if>
+      <if test="score71 != null">
+        score71,
+      </if>
+      <if test="score72 != null">
+        score72,
+      </if>
+      <if test="score73 != null">
+        score73,
+      </if>
+      <if test="score81 != null">
+        score81,
+      </if>
+      <if test="score82 != null">
+        score82,
+      </if>
+      <if test="score83 != null">
+        score83,
+      </if>
+      <if test="score91 != null">
+        score91,
+      </if>
+      <if test="score92 != null">
+        score92,
+      </if>
+      <if test="score93 != null">
+        score93,
+      </if>
+      <if test="score101 != null">
+        score101,
+      </if>
+      <if test="score102 != null">
+        score102,
+      </if>
+      <if test="score103 != null">
+        score103,
+      </if>
+      <if test="score111 != null">
+        score111,
+      </if>
+      <if test="score112 != null">
+        score112,
+      </if>
+      <if test="score113 != null">
+        score113,
+      </if>
+      <if test="score121 != null">
+        score121,
+      </if>
+      <if test="score122 != null">
+        score122,
+      </if>
+      <if test="score123 != null">
+        score123,
+      </if>
+      <if test="score131 != null">
+        score131,
+      </if>
+      <if test="score132 != null">
+        score132,
+      </if>
+      <if test="score133 != null">
+        score133,
+      </if>
+      <if test="score141 != null">
+        score141,
+      </if>
+      <if test="score142 != null">
+        score142,
+      </if>
+      <if test="score143 != null">
+        score143,
+      </if>
+      <if test="score151 != null">
+        score151,
+      </if>
+      <if test="score152 != null">
+        score152,
+      </if>
+      <if test="score153 != null">
+        score153,
+      </if>
+      <if test="score161 != null">
+        score161,
+      </if>
+      <if test="score162 != null">
+        score162,
+      </if>
+      <if test="score163 != null">
+        score163,
+      </if>
+      <if test="score171 != null">
+        score171,
+      </if>
+      <if test="score172 != null">
+        score172,
+      </if>
+      <if test="score173 != null">
+        score173,
+      </if>
+      <if test="score181 != null">
+        score181,
+      </if>
+      <if test="score182 != null">
+        score182,
+      </if>
+      <if test="score183 != null">
+        score183,
+      </if>
+      <if test="score191 != null">
+        score191,
+      </if>
+      <if test="score192 != null">
+        score192,
+      </if>
+      <if test="score193 != null">
+        score193,
+      </if>
+      <if test="score201 != null">
+        score201,
+      </if>
+      <if test="score202 != null">
+        score202,
+      </if>
+      <if test="score203 != null">
+        score203,
+      </if>
+      <if test="score211 != null">
+        score211,
+      </if>
+      <if test="score212 != null">
+        score212,
+      </if>
+      <if test="score213 != null">
+        score213,
+      </if>
+      <if test="score221 != null">
+        score221,
+      </if>
+      <if test="score222 != null">
+        score222,
+      </if>
+      <if test="score223 != null">
+        score223,
+      </if>
+      <if test="score231 != null">
+        score231,
+      </if>
+      <if test="score232 != null">
+        score232,
+      </if>
+      <if test="score233 != null">
+        score233,
+      </if>
+            <if test="score241 != null">
+        score241,
+      </if>
+      <if test="score242 != null">
+        score242,
+      </if>
+      <if test="score243 != null">
+        score243,
+      </if>
+            <if test="score251 != null">
+        score251,
+      </if>
+      <if test="score252 != null">
+        score252,
+      </if>
+      <if test="score253 != null">
+        score253,
+      </if>
+            <if test="score261 != null">
+        score261,
+      </if>
+      <if test="score262 != null">
+        score262,
+      </if>
+      <if test="score263 != null">
+        score263,
+      </if>
+            <if test="score271 != null">
+        score271,
+      </if>
+      <if test="score272 != null">
+        score272,
+      </if>
+      <if test="score273 != null">
+        score273,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isconfirm != null">
+        #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="peopleid != null">
+        #{peopleid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplename != null">
+        #{peoplename,jdbcType=VARCHAR},
+      </if>
+      <if test="refereeid != null">
+        #{refereeid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        #{score1,jdbcType=VARCHAR},
+      </if>
+      <if test="score2 != null">
+        #{score2,jdbcType=VARCHAR},
+      </if>
+      <if test="score3 != null">
+        #{score3,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="jointeamid != null">
+        #{jointeamid,jdbcType=INTEGER},
+      </if>
+      <if test="jointeamname != null">
+        #{jointeamname,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplesn != null">
+        #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="score21 != null">
+        #{score21,jdbcType=VARCHAR},
+      </if>
+      <if test="score22 != null">
+        #{score22,jdbcType=VARCHAR},
+      </if>
+      <if test="score23 != null">
+        #{score23,jdbcType=VARCHAR},
+      </if>
+      <if test="score31 != null">
+        #{score31,jdbcType=VARCHAR},
+      </if>
+      <if test="score32 != null">
+        #{score32,jdbcType=VARCHAR},
+      </if>
+      <if test="score33 != null">
+        #{score33,jdbcType=VARCHAR},
+      </if>
+      <if test="score41 != null">
+        #{score41,jdbcType=VARCHAR},
+      </if>
+      <if test="score42 != null">
+        #{score42,jdbcType=VARCHAR},
+      </if>
+      <if test="score43 != null">
+        #{score43,jdbcType=VARCHAR},
+      </if>
+      <if test="score51 != null">
+        #{score51,jdbcType=VARCHAR},
+      </if>
+      <if test="score52 != null">
+        #{score52,jdbcType=VARCHAR},
+      </if>
+      <if test="score53 != null">
+        #{score53,jdbcType=VARCHAR},
+      </if>
+      <if test="score61 != null">
+        #{score61,jdbcType=VARCHAR},
+      </if>
+      <if test="score62 != null">
+        #{score62,jdbcType=VARCHAR},
+      </if>
+      <if test="score63 != null">
+        #{score63,jdbcType=VARCHAR},
+      </if>
+      <if test="score71 != null">
+        #{score71,jdbcType=VARCHAR},
+      </if>
+      <if test="score72 != null">
+        #{score72,jdbcType=VARCHAR},
+      </if>
+      <if test="score73 != null">
+        #{score73,jdbcType=VARCHAR},
+      </if>
+      <if test="score81 != null">
+        #{score81,jdbcType=VARCHAR},
+      </if>
+      <if test="score82 != null">
+        #{score82,jdbcType=VARCHAR},
+      </if>
+      <if test="score83 != null">
+        #{score83,jdbcType=VARCHAR},
+      </if>
+      <if test="score91 != null">
+        #{score91,jdbcType=VARCHAR},
+      </if>
+      <if test="score92 != null">
+        #{score92,jdbcType=VARCHAR},
+      </if>
+      <if test="score93 != null">
+        #{score93,jdbcType=VARCHAR},
+      </if>
+      <if test="score101 != null">
+        #{score101,jdbcType=VARCHAR},
+      </if>
+      <if test="score102 != null">
+        #{score102,jdbcType=VARCHAR},
+      </if>
+      <if test="score103 != null">
+        #{score103,jdbcType=VARCHAR},
+      </if>
+      <if test="score111 != null">
+        #{score111,jdbcType=VARCHAR},
+      </if>
+      <if test="score112 != null">
+        #{score112,jdbcType=VARCHAR},
+      </if>
+      <if test="score113 != null">
+        #{score113,jdbcType=VARCHAR},
+      </if>
+      <if test="score121 != null">
+        #{score121,jdbcType=VARCHAR},
+      </if>
+      <if test="score122 != null">
+        #{score122,jdbcType=VARCHAR},
+      </if>
+      <if test="score123 != null">
+        #{score123,jdbcType=VARCHAR},
+      </if>
+      <if test="score131 != null">
+        #{score131,jdbcType=VARCHAR},
+      </if>
+      <if test="score132 != null">
+        #{score132,jdbcType=VARCHAR},
+      </if>
+      <if test="score133 != null">
+        #{score133,jdbcType=VARCHAR},
+      </if>
+      <if test="score141 != null">
+        #{score141,jdbcType=VARCHAR},
+      </if>
+      <if test="score142 != null">
+        #{score142,jdbcType=VARCHAR},
+      </if>
+      <if test="score143 != null">
+        #{score143,jdbcType=VARCHAR},
+      </if>
+      <if test="score151 != null">
+        #{score151,jdbcType=VARCHAR},
+      </if>
+      <if test="score152 != null">
+        #{score152,jdbcType=VARCHAR},
+      </if>
+      <if test="score153 != null">
+        #{score153,jdbcType=VARCHAR},
+      </if>
+      <if test="score161 != null">
+        #{score161,jdbcType=VARCHAR},
+      </if>
+      <if test="score162 != null">
+        #{score162,jdbcType=VARCHAR},
+      </if>
+      <if test="score163 != null">
+        #{score163,jdbcType=VARCHAR},
+      </if>
+      <if test="score171 != null">
+        #{score171,jdbcType=VARCHAR},
+      </if>
+      <if test="score172 != null">
+        #{score172,jdbcType=VARCHAR},
+      </if>
+      <if test="score173 != null">
+        #{score173,jdbcType=VARCHAR},
+      </if>
+      <if test="score181 != null">
+        #{score181,jdbcType=VARCHAR},
+      </if>
+      <if test="score182 != null">
+        #{score182,jdbcType=VARCHAR},
+      </if>
+      <if test="score183 != null">
+        #{score183,jdbcType=VARCHAR},
+      </if>
+      <if test="score191 != null">
+        #{score191,jdbcType=VARCHAR},
+      </if>
+      <if test="score192 != null">
+        #{score192,jdbcType=VARCHAR},
+      </if>
+      <if test="score193 != null">
+        #{score193,jdbcType=VARCHAR},
+      </if>
+      <if test="score201 != null">
+        #{score201,jdbcType=VARCHAR},
+      </if>
+      <if test="score202 != null">
+        #{score202,jdbcType=VARCHAR},
+      </if>
+      <if test="score203 != null">
+        #{score203,jdbcType=VARCHAR},
+      </if>
+      <if test="score211 != null">
+        #{score211,jdbcType=VARCHAR},
+      </if>
+      <if test="score212 != null">
+        #{score212,jdbcType=VARCHAR},
+      </if>
+      <if test="score213 != null">
+        #{score213,jdbcType=VARCHAR},
+      </if>
+      <if test="score221 != null">
+        #{score221,jdbcType=VARCHAR},
+      </if>
+      <if test="score222 != null">
+        #{score222,jdbcType=VARCHAR},
+      </if>
+      <if test="score223 != null">
+        #{score223,jdbcType=VARCHAR},
+      </if>
+      <if test="score231 != null">
+        #{score231,jdbcType=VARCHAR},
+      </if>
+      <if test="score232 != null">
+        #{score232,jdbcType=VARCHAR},
+      </if>
+      <if test="score233 != null">
+        #{score233,jdbcType=VARCHAR},
+      </if>
+         <if test="score241 != null">
+        #{score241,jdbcType=VARCHAR},
+      </if>
+      <if test="score242 != null">
+        #{score242,jdbcType=VARCHAR},
+      </if>
+      <if test="score243 != null">
+        #{score243,jdbcType=VARCHAR},
+      </if>
+         <if test="score251 != null">
+        #{score251,jdbcType=VARCHAR},
+      </if>
+      <if test="score252 != null">
+        #{score252,jdbcType=VARCHAR},
+      </if>
+      <if test="score253 != null">
+        #{score253,jdbcType=VARCHAR},
+      </if>
+         <if test="score261 != null">
+        #{score261,jdbcType=VARCHAR},
+      </if>
+      <if test="score262 != null">
+        #{score262,jdbcType=VARCHAR},
+      </if>
+      <if test="score263 != null">
+        #{score263,jdbcType=VARCHAR},
+      </if>
+         <if test="score271 != null">
+        #{score271,jdbcType=VARCHAR},
+      </if>
+      <if test="score272 != null">
+        #{score272,jdbcType=VARCHAR},
+      </if>
+      <if test="score273 != null">
+        #{score273,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Matchlist1">
+    update matchlist1
+    <set>
+      <if test="isconfirm != null">
+        isconfirm = #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="peopleid != null">
+        peopleId = #{peopleid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplename != null">
+        peoplename = #{peoplename,jdbcType=VARCHAR},
+      </if>
+      <if test="refereeid != null">
+        refereeid = #{refereeid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        turn = #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        score1 = #{score1,jdbcType=VARCHAR},
+      </if>
+      <if test="score2 != null">
+        score2 = #{score2,jdbcType=VARCHAR},
+      </if>
+      <if test="score3 != null">
+        score3 = #{score3,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        addTime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="teamid != null">
+        teamid = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="jointeamid != null">
+        jointeamid = #{jointeamid,jdbcType=INTEGER},
+      </if>
+      <if test="jointeamname != null">
+        jointeamname = #{jointeamname,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplesn != null">
+        peoplesn = #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="score21 != null">
+        score21 = #{score21,jdbcType=VARCHAR},
+      </if>
+      <if test="score22 != null">
+        score22 = #{score22,jdbcType=VARCHAR},
+      </if>
+      <if test="score23 != null">
+        score23 = #{score23,jdbcType=VARCHAR},
+      </if>
+      <if test="score31 != null">
+        score31 = #{score31,jdbcType=VARCHAR},
+      </if>
+      <if test="score32 != null">
+        score32 = #{score32,jdbcType=VARCHAR},
+      </if>
+      <if test="score33 != null">
+        score33 = #{score33,jdbcType=VARCHAR},
+      </if>
+      <if test="score41 != null">
+        score41 = #{score41,jdbcType=VARCHAR},
+      </if>
+      <if test="score42 != null">
+        score42 = #{score42,jdbcType=VARCHAR},
+      </if>
+      <if test="score43 != null">
+        score43 = #{score43,jdbcType=VARCHAR},
+      </if>
+      <if test="score51 != null">
+        score51 = #{score51,jdbcType=VARCHAR},
+      </if>
+      <if test="score52 != null">
+        score52 = #{score52,jdbcType=VARCHAR},
+      </if>
+      <if test="score53 != null">
+        score53 = #{score53,jdbcType=VARCHAR},
+      </if>
+      <if test="score61 != null">
+        score61 = #{score61,jdbcType=VARCHAR},
+      </if>
+      <if test="score62 != null">
+        score62 = #{score62,jdbcType=VARCHAR},
+      </if>
+      <if test="score63 != null">
+        score63 = #{score63,jdbcType=VARCHAR},
+      </if>
+      <if test="score71 != null">
+        score71 = #{score71,jdbcType=VARCHAR},
+      </if>
+      <if test="score72 != null">
+        score72 = #{score72,jdbcType=VARCHAR},
+      </if>
+      <if test="score73 != null">
+        score73 = #{score73,jdbcType=VARCHAR},
+      </if>
+      <if test="score81 != null">
+        score81 = #{score81,jdbcType=VARCHAR},
+      </if>
+      <if test="score82 != null">
+        score82 = #{score82,jdbcType=VARCHAR},
+      </if>
+      <if test="score83 != null">
+        score83 = #{score83,jdbcType=VARCHAR},
+      </if>
+      <if test="score91 != null">
+        score91 = #{score91,jdbcType=VARCHAR},
+      </if>
+      <if test="score92 != null">
+        score92 = #{score92,jdbcType=VARCHAR},
+      </if>
+      <if test="score93 != null">
+        score93 = #{score93,jdbcType=VARCHAR},
+      </if>
+      <if test="score101 != null">
+        score101 = #{score101,jdbcType=VARCHAR},
+      </if>
+      <if test="score102 != null">
+        score102 = #{score102,jdbcType=VARCHAR},
+      </if>
+      <if test="score103 != null">
+        score103 = #{score103,jdbcType=VARCHAR},
+      </if>
+      <if test="score111 != null">
+        score111 = #{score111,jdbcType=VARCHAR},
+      </if>
+      <if test="score112 != null">
+        score112 = #{score112,jdbcType=VARCHAR},
+      </if>
+      <if test="score113 != null">
+        score113 = #{score113,jdbcType=VARCHAR},
+      </if>
+      <if test="score121 != null">
+        score121 = #{score121,jdbcType=VARCHAR},
+      </if>
+      <if test="score122 != null">
+        score122 = #{score122,jdbcType=VARCHAR},
+      </if>
+      <if test="score123 != null">
+        score123 = #{score123,jdbcType=VARCHAR},
+      </if>
+      <if test="score131 != null">
+        score131 = #{score131,jdbcType=VARCHAR},
+      </if>
+      <if test="score132 != null">
+        score132 = #{score132,jdbcType=VARCHAR},
+      </if>
+      <if test="score133 != null">
+        score133 = #{score133,jdbcType=VARCHAR},
+      </if>
+      <if test="score141 != null">
+        score141 = #{score141,jdbcType=VARCHAR},
+      </if>
+      <if test="score142 != null">
+        score142 = #{score142,jdbcType=VARCHAR},
+      </if>
+      <if test="score143 != null">
+        score143 = #{score143,jdbcType=VARCHAR},
+      </if>
+      <if test="score151 != null">
+        score151 = #{score151,jdbcType=VARCHAR},
+      </if>
+      <if test="score152 != null">
+        score152 = #{score152,jdbcType=VARCHAR},
+      </if>
+      <if test="score153 != null">
+        score153 = #{score153,jdbcType=VARCHAR},
+      </if>
+      <if test="score161 != null">
+        score161 = #{score161,jdbcType=VARCHAR},
+      </if>
+      <if test="score162 != null">
+        score162 = #{score162,jdbcType=VARCHAR},
+      </if>
+      <if test="score163 != null">
+        score163 = #{score163,jdbcType=VARCHAR},
+      </if>
+      <if test="score171 != null">
+        score171 = #{score171,jdbcType=VARCHAR},
+      </if>
+      <if test="score172 != null">
+        score172 = #{score172,jdbcType=VARCHAR},
+      </if>
+      <if test="score173 != null">
+        score173 = #{score173,jdbcType=VARCHAR},
+      </if>
+      <if test="score181 != null">
+        score181 = #{score181,jdbcType=VARCHAR},
+      </if>
+      <if test="score182 != null">
+        score182 = #{score182,jdbcType=VARCHAR},
+      </if>
+      <if test="score183 != null">
+        score183 = #{score183,jdbcType=VARCHAR},
+      </if>
+      <if test="score191 != null">
+        score191 = #{score191,jdbcType=VARCHAR},
+      </if>
+      <if test="score192 != null">
+        score192 = #{score192,jdbcType=VARCHAR},
+      </if>
+      <if test="score193 != null">
+        score193 = #{score193,jdbcType=VARCHAR},
+      </if>
+      <if test="score201 != null">
+        score201 = #{score201,jdbcType=VARCHAR},
+      </if>
+      <if test="score202 != null">
+        score202 = #{score202,jdbcType=VARCHAR},
+      </if>
+      <if test="score203 != null">
+        score203 = #{score203,jdbcType=VARCHAR},
+      </if>
+      <if test="score211 != null">
+        score211 = #{score211,jdbcType=VARCHAR},
+      </if>
+      <if test="score212 != null">
+        score212 = #{score212,jdbcType=VARCHAR},
+      </if>
+      <if test="score213 != null">
+        score213 = #{score213,jdbcType=VARCHAR},
+      </if>
+      <if test="score221 != null">
+        score221 = #{score221,jdbcType=VARCHAR},
+      </if>
+      <if test="score222 != null">
+        score222 = #{score222,jdbcType=VARCHAR},
+      </if>
+      <if test="score223 != null">
+        score223 = #{score223,jdbcType=VARCHAR},
+      </if>
+      <if test="score231 != null">
+        score231 = #{score231,jdbcType=VARCHAR},
+      </if>
+      <if test="score232 != null">
+        score232 = #{score232,jdbcType=VARCHAR},
+      </if>
+      <if test="score233 != null">
+        score233 = #{score233,jdbcType=VARCHAR},
+      </if>
+         <if test="score241 != null">
+        score241 = #{score241,jdbcType=VARCHAR},
+      </if>
+      <if test="score242 != null">
+        score242 = #{score242,jdbcType=VARCHAR},
+      </if>
+      <if test="score243 != null">
+        score243 = #{score243,jdbcType=VARCHAR},
+      </if>
+         <if test="score251 != null">
+        score251 = #{score251,jdbcType=VARCHAR},
+      </if>
+      <if test="score252 != null">
+        score252 = #{score252,jdbcType=VARCHAR},
+      </if>
+      <if test="score253 != null">
+        score253 = #{score253,jdbcType=VARCHAR},
+      </if>
+         <if test="score261 != null">
+        score261 = #{score261,jdbcType=VARCHAR},
+      </if>
+      <if test="score262 != null">
+        score262 = #{score262,jdbcType=VARCHAR},
+      </if>
+      <if test="score263 != null">
+        score263 = #{score263,jdbcType=VARCHAR},
+      </if>
+         <if test="score271 != null">
+        score271 = #{score271,jdbcType=VARCHAR},
+      </if>
+      <if test="score272 != null">
+        score272 = #{score272,jdbcType=VARCHAR},
+      </if>
+      <if test="score273 != null">
+        score273 = #{score273,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Matchlist1">
+    update matchlist1
+    set 
+    isconfirm = #{isconfirm,jdbcType=INTEGER},
+    peopleId = #{peopleid,jdbcType=INTEGER},
+      peoplename = #{peoplename,jdbcType=VARCHAR},
+      refereeid = #{refereeid,jdbcType=INTEGER},
+      turn = #{turn,jdbcType=INTEGER},
+      score1 = #{score1,jdbcType=VARCHAR},
+      score2 = #{score2,jdbcType=VARCHAR},
+      score3 = #{score3,jdbcType=VARCHAR},
+      addTime = #{addtime,jdbcType=TIMESTAMP},
+      teamid = #{teamid,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      jointeamid = #{jointeamid,jdbcType=INTEGER},
+      jointeamname = #{jointeamname,jdbcType=VARCHAR},
+      peoplesn = #{peoplesn,jdbcType=VARCHAR},
+      score21 = #{score21,jdbcType=VARCHAR},
+      score22 = #{score22,jdbcType=VARCHAR},
+      score23 = #{score23,jdbcType=VARCHAR},
+      score31 = #{score31,jdbcType=VARCHAR},
+      score32 = #{score32,jdbcType=VARCHAR},
+      score33 = #{score33,jdbcType=VARCHAR},
+      score41 = #{score41,jdbcType=VARCHAR},
+      score42 = #{score42,jdbcType=VARCHAR},
+      score43 = #{score43,jdbcType=VARCHAR},
+      score51 = #{score51,jdbcType=VARCHAR},
+      score52 = #{score52,jdbcType=VARCHAR},
+      score53 = #{score53,jdbcType=VARCHAR},
+      score61 = #{score61,jdbcType=VARCHAR},
+      score62 = #{score62,jdbcType=VARCHAR},
+      score63 = #{score63,jdbcType=VARCHAR},
+      score71 = #{score71,jdbcType=VARCHAR},
+      score72 = #{score72,jdbcType=VARCHAR},
+      score73 = #{score73,jdbcType=VARCHAR},
+      score81 = #{score81,jdbcType=VARCHAR},
+      score82 = #{score82,jdbcType=VARCHAR},
+      score83 = #{score83,jdbcType=VARCHAR},
+      score91 = #{score91,jdbcType=VARCHAR},
+      score92 = #{score92,jdbcType=VARCHAR},
+      score93 = #{score93,jdbcType=VARCHAR},
+      score101 = #{score101,jdbcType=VARCHAR},
+      score102 = #{score102,jdbcType=VARCHAR},
+      score103 = #{score103,jdbcType=VARCHAR},
+      score111 = #{score111,jdbcType=VARCHAR},
+      score112 = #{score112,jdbcType=VARCHAR},
+      score113 = #{score113,jdbcType=VARCHAR},
+      score121 = #{score121,jdbcType=VARCHAR},
+      score122 = #{score122,jdbcType=VARCHAR},
+      score123 = #{score123,jdbcType=VARCHAR},
+      score131 = #{score131,jdbcType=VARCHAR},
+      score132 = #{score132,jdbcType=VARCHAR},
+      score133 = #{score133,jdbcType=VARCHAR},
+      score141 = #{score141,jdbcType=VARCHAR},
+      score142 = #{score142,jdbcType=VARCHAR},
+      score143 = #{score143,jdbcType=VARCHAR},
+      score151 = #{score151,jdbcType=VARCHAR},
+      score152 = #{score152,jdbcType=VARCHAR},
+      score153 = #{score153,jdbcType=VARCHAR},
+      score161 = #{score161,jdbcType=VARCHAR},
+      score162 = #{score162,jdbcType=VARCHAR},
+      score163 = #{score163,jdbcType=VARCHAR},
+      score171 = #{score171,jdbcType=VARCHAR},
+      score172 = #{score172,jdbcType=VARCHAR},
+      score173 = #{score173,jdbcType=VARCHAR},
+      score181 = #{score181,jdbcType=VARCHAR},
+      score182 = #{score182,jdbcType=VARCHAR},
+      score183 = #{score183,jdbcType=VARCHAR},
+      score191 = #{score191,jdbcType=VARCHAR},
+      score192 = #{score192,jdbcType=VARCHAR},
+      score193 = #{score193,jdbcType=VARCHAR},
+      score201 = #{score201,jdbcType=VARCHAR},
+      score202 = #{score202,jdbcType=VARCHAR},
+      score203 = #{score203,jdbcType=VARCHAR},
+      score211 = #{score211,jdbcType=VARCHAR},
+      score212 = #{score212,jdbcType=VARCHAR},
+      score213 = #{score213,jdbcType=VARCHAR},
+      score221 = #{score221,jdbcType=VARCHAR},
+      score222 = #{score222,jdbcType=VARCHAR},
+      score223 = #{score223,jdbcType=VARCHAR},
+      score231 = #{score233,jdbcType=VARCHAR},
+      score232 = #{score233,jdbcType=VARCHAR},
+      score233 = #{score233,jdbcType=VARCHAR},
+     score241 = #{score241,jdbcType=VARCHAR},
+      score242 = #{score242,jdbcType=VARCHAR},
+      score243 = #{score243,jdbcType=VARCHAR},
+      score251 = #{score251,jdbcType=VARCHAR},
+      score252 = #{score252,jdbcType=VARCHAR},
+      score253 = #{score253,jdbcType=VARCHAR},
+      score261 = #{score261,jdbcType=VARCHAR},
+      score262 = #{score262,jdbcType=VARCHAR},
+      score263 = #{score263,jdbcType=VARCHAR},
+      score271 = #{score271,jdbcType=VARCHAR},
+      score272 = #{score272,jdbcType=VARCHAR},
+      score273 = #{score273,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.HxMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Hx">
+    <id column="Manager" jdbcType="INTEGER" property="manager" />
+    <result column="News" jdbcType="INTEGER" property="news" />
+    <result column="Report" jdbcType="INTEGER" property="report" />
+    <result column="Match" jdbcType="INTEGER" property="match" />
+    <result column="Exam" jdbcType="INTEGER" property="exam" />
+    <result column="Fee" jdbcType="INTEGER" property="fee" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Manager, News, Report, Match, Exam, Fee, Name, Password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hx
+    where Manager = #{manager,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hx
+    where Manager = #{manager,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Hx">
+    insert into hx (Manager, News, Report, 
+      Match, Exam, Fee, Name, 
+      Password)
+    values (#{manager,jdbcType=INTEGER}, #{news,jdbcType=INTEGER}, #{report,jdbcType=INTEGER}, 
+      #{match,jdbcType=INTEGER}, #{exam,jdbcType=INTEGER}, #{fee,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Hx">
+    insert into hx
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="manager != null">
+        Manager,
+      </if>
+      <if test="news != null">
+        News,
+      </if>
+      <if test="report != null">
+        Report,
+      </if>
+      <if test="match != null">
+        Match,
+      </if>
+      <if test="exam != null">
+        Exam,
+      </if>
+      <if test="fee != null">
+        Fee,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="manager != null">
+        #{manager,jdbcType=INTEGER},
+      </if>
+      <if test="news != null">
+        #{news,jdbcType=INTEGER},
+      </if>
+      <if test="report != null">
+        #{report,jdbcType=INTEGER},
+      </if>
+      <if test="match != null">
+        #{match,jdbcType=INTEGER},
+      </if>
+      <if test="exam != null">
+        #{exam,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Hx">
+    update hx
+    <set>
+      <if test="news != null">
+        News = #{news,jdbcType=INTEGER},
+      </if>
+      <if test="report != null">
+        Report = #{report,jdbcType=INTEGER},
+      </if>
+      <if test="match != null">
+        Match = #{match,jdbcType=INTEGER},
+      </if>
+      <if test="exam != null">
+        Exam = #{exam,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null">
+        Fee = #{fee,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Manager = #{manager,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Hx">
+    update hx
+    set News = #{news,jdbcType=INTEGER},
+      Report = #{report,jdbcType=INTEGER},
+      Match = #{match,jdbcType=INTEGER},
+      Exam = #{exam,jdbcType=INTEGER},
+      Fee = #{fee,jdbcType=INTEGER},
+      Name = #{name,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR}
+    where Manager = #{manager,jdbcType=INTEGER}
+  </update>
+</mapper>

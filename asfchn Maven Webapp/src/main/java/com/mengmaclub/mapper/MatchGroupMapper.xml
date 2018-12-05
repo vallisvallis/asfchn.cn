@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.MatchGroupMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.MatchGroup">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="Groupage" jdbcType="VARCHAR" property="groupage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Groupage
+  </sql>
+  <select id="findAll" resultType="com.mengmaclub.model.MatchGroup">
+  select * from match_group
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from match_group
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from match_group
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.MatchGroup">
+    insert into match_group (ID, Groupage)
+    values (#{id,jdbcType=INTEGER}, #{groupage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.MatchGroup">
+    insert into match_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="groupage != null">
+        Groupage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="groupage != null">
+        #{groupage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.MatchGroup">
+    update match_group
+    <set>
+      <if test="groupage != null">
+        Groupage = #{group,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.MatchGroup">
+    update match_group
+    set Groupage = #{groupage,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

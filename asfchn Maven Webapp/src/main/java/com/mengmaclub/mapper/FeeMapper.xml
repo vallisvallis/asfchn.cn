@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.FeeMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Fee">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="People" jdbcType="INTEGER" property="people" />
+    <result column="Team" jdbcType="INTEGER" property="team" />
+    <result column="FeeType" jdbcType="INTEGER" property="feetype" />
+    <result column="FeeDieline" jdbcType="DATE" property="feedieline" />
+    <result column="AddTime" jdbcType="DATE" property="addtime" />
+    <result column="FeeStatus" jdbcType="INTEGER" property="feestatus" />
+    <result column="Manager" jdbcType="VARCHAR" property="manager" />
+    <result column="peoplename" jdbcType="VARCHAR" property="peoplename" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, price, People, Team, FeeType, FeeDieline, AddTime, FeeStatus, Manager,peoplename,teamname
+  </sql>
+  
+  <select id="findTeam" resultType="com.mengmaclub.model.Fee">
+  SELECT * from fee where Team is not  null AND FeeStatus =4
+  
+  </select>
+ <select id="findPeople" resultType="com.mengmaclub.model.Fee">
+ SELECT * from fee where People is  not null AND FeeStatus =4
+ 
+ </select>
+	
+  
+  <select id="findOldApply" resultType="com.mengmaclub.model.Fee">
+SELECT * FROM fee where    team= #{team,jdbcType=INTEGER}  
+  </select>
+  
+ <select id="findFeeByPeopleId"  parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Fee">
+ SELECT * FROM fee where people =#{people,jdbcType=INTEGER}
+ 
+ </select>
+  <select id="findNeedToConfirm" resultType="com.mengmaclub.model.Fee">
+   SELECT * from fee where FeeStatus !=4
+  </select>
+  <select id="findNeedToConfirmAboutPeople" resultType="com.mengmaclub.model.Fee">
+   SELECT * from fee where FeeStatus =6
+  
+  </select>
+  <select id="findThisTeamPeopleWhoIsProToSendHx" resultType="com.mengmaclub.model.HxPeople" >
+  SELECT * from fee where People !=0
+  
+  </select>
+  <select id="findAll" resultType="com.mengmaclub.model.Fee">
+  select * from fee
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fee
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fee
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Fee">
+    insert into fee (ID, price, People, 
+      Team, FeeType, FeeDieline, 
+      AddTime, FeeStatus, Manager,peoplename,teamname
+      )
+    values (#{id,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, #{people,jdbcType=INTEGER}, 
+      #{team,jdbcType=INTEGER}, #{feetype,jdbcType=INTEGER}, #{feedieline,jdbcType=DATE}, 
+      #{addtime,jdbcType=DATE}, #{feestatus,jdbcType=INTEGER}, #{manager,jdbcType=VARCHAR}
+      , #{peoplename,jdbcType=VARCHAR}, #{teamname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Fee">
+    insert into fee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="people != null">
+        People,
+      </if>
+      <if test="team != null">
+        Team,
+      </if>
+      <if test="feetype != null">
+        FeeType,
+      </if>
+      <if test="feedieline != null">
+        FeeDieline,
+      </if>
+      <if test="addtime != null">
+        AddTime,
+      </if>
+      <if test="feestatus != null">
+        FeeStatus,
+      </if>
+      <if test="manager != null">
+        Manager,
+      </if>
+      <if test="peoplename != null">
+        peoplename,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="people != null">
+        #{people,jdbcType=INTEGER},
+      </if>
+      <if test="team != null">
+        #{team,jdbcType=INTEGER},
+      </if>
+      <if test="feetype != null">
+        #{feetype,jdbcType=INTEGER},
+      </if>
+      <if test="feedieline != null">
+        #{feedieline,jdbcType=DATE},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="feestatus != null">
+        #{feestatus,jdbcType=INTEGER},
+      </if>
+      <if test="manager != null">
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplename != null">
+        #{peoplename,jdbcType=VARCHAR},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Fee">
+    update fee
+    <set>
+      <if test="price != null">
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="people != null">
+        People = #{people,jdbcType=INTEGER},
+      </if>
+      <if test="team != null">
+        Team = #{team,jdbcType=INTEGER},
+      </if>
+      <if test="feetype != null">
+        FeeType = #{feetype,jdbcType=INTEGER},
+      </if>
+      <if test="feedieline != null">
+        FeeDieline = #{feedieline,jdbcType=DATE},
+      </if>
+      <if test="addtime != null">
+        AddTime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="feestatus != null">
+        FeeStatus = #{feestatus,jdbcType=INTEGER},
+      </if>
+      <if test="manager != null">
+        Manager = #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplename != null">
+        peoplename = #{peoplename,jdbcType=VARCHAR},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Fee">
+    update fee
+    set price = #{price,jdbcType=DOUBLE},
+      People = #{people,jdbcType=INTEGER},
+      Team = #{team,jdbcType=INTEGER},
+      FeeType = #{feetype,jdbcType=INTEGER},
+      FeeDieline = #{feedieline,jdbcType=DATE},
+      AddTime = #{addtime,jdbcType=DATE},
+      FeeStatus = #{feestatus,jdbcType=INTEGER},
+      Manager = #{manager,jdbcType=VARCHAR}
+      peoplename = #{peoplename,jdbcType=VARCHAR}
+      teamname = #{teamname,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

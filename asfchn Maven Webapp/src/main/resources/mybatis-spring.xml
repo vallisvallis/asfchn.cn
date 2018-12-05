@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/context 
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/tx 
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        ">
+        <!-- 注解扫描 -->
+        <context:component-scan base-package="com.mengmaclub"/>
+        <!-- jdbc -->
+        <context:property-placeholder location="classpath:jdbc.properties"/>
+        <!-- 1.设置数据源 -->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="testConnectionOnCheckin" value="false"></property>
+        <property name="testConnectionOnCheckout" value="true"></property>
+        </bean>
+        <!-- 2.配置与mybatis整合 -->
+        <!-- 创建sqlSessionFactory工厂 -->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 指定MYbatis全局配置文件的位置 -->
+        <property name="configLocation" value="classpath:sqlConfig.xml"/>
+        </bean>
+        <!--3.配置mybatis的代理接口开发-->
+        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描所有DAO，加到ioc -->
+        <property name="basePackage" value="com.mengmaclub.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        </bean>
+        <!-- 4.事物 -->
+        <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+        </bean>
+        <!-- 5.配置拦截service -->
+       <aop:config>
+       				<aop:pointcut expression="execution(* com.mengmaclub.service..*(..))" id="txPoint"/>
+      				<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
+       </aop:config>   
+        <!-- 配置事物增强，事物如何切入 -->
+       <tx:advice id="txAdvice" transaction-manager="txManager">
+       <tx:attributes>
+       <tx:method name="*"/>
+       <tx:method name="get*" read-only="true"/>
+       </tx:attributes>
+       </tx:advice>
+        </beans>

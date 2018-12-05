@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.HxPeopleMapper">
+	<resultMap id="BaseResultMap" type="com.mengmaclub.model.HxPeople">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="Name" jdbcType="VARCHAR" property="name" />
+		<result column="SN" jdbcType="VARCHAR" property="sn" />
+		<result column="Password" jdbcType="VARCHAR" property="password" />
+		<result column="TeamName" jdbcType="VARCHAR" property="teamname" />
+		<result column="BelongTeam" jdbcType="INTEGER" property="belongteam" />
+		<result column="Gender" jdbcType="VARCHAR" property="gender" />
+		<result column="City" jdbcType="VARCHAR" property="city" />
+		<result column="BirthDay" jdbcType="DATE" property="birthday" />
+		<result column="Age" jdbcType="INTEGER" property="age" />
+		<result column="Photo" jdbcType="VARCHAR" property="photo" />
+		<result column="CertNumber" jdbcType="VARCHAR" property="certnumber" />
+		<result column="Occupation" jdbcType="VARCHAR" property="occupation" />
+		<result column="PersonIntro" jdbcType="VARCHAR" property="personintro" />
+		<result column="YearFeeStatus" jdbcType="INTEGER" property="yearfeestatus" />
+		<result column="MatchFeeStatus" jdbcType="INTEGER" property="matchfeestatus" />
+		<result column="ExamFeeStatus" jdbcType="INTEGER" property="examfeestatus" />
+		<result column="AddUser" jdbcType="VARCHAR" property="adduser" />
+		<result column="AddTime" jdbcType="DATE" property="addtime" />
+		<result column="prop1" jdbcType="VARCHAR" property="prop1" />
+		<result column="prop2" jdbcType="VARCHAR" property="prop2" />
+		<result column="prop3" jdbcType="VARCHAR" property="prop3" />
+		<result column="prop4" jdbcType="VARCHAR" property="prop4" />
+		<result column="YearFeePayDate" jdbcType="DATE" property="yearfeepaydate" />
+		<result column="MatchFeePayDate" jdbcType="DATE" property="matchfeepaydate" />
+		<result column="EligibleDat" jdbcType="DATE" property="eligibledat" />
+		<result column="ExamFeePayDate" jdbcType="DATE" property="examfeepaydate" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, Name, SN, Password,TeamName, BelongTeam, Gender, City,
+		BirthDay, Age, Photo,
+		CertNumber,EligibleDat,
+		Occupation, PersonIntro,
+		YearFeeStatus, MatchFeeStatus, ExamFeeStatus, AddUser,
+		AddTime,
+		prop1,
+		prop2, prop3, prop4, YearFeePayDate, MatchFeePayDate, ExamFeePayDate
+	</sql>
+	<select id="findinpage"  resultType="com.mengmaclub.model.HxPeople">
+	select * from hx_people limit  ${param1},${param2}
+	</select>
+	
+	<select id="findBySn" parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople" >
+	select * from hx_people where SN=#{sn,jdbcType=VARCHAR}
+	
+	</select>
+	<select id="findBySnInOne" parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople">
+	select * from hx_people where SN=#{sn,jdbcType=VARCHAR}
+	</select>
+	<select id="findPeopleCertNumIsExist" parameterType="java.lang.String"  resultType="java.lang.Integer">
+	SELECT COUNT(CertNumber) from hx_people where CertNumber = #{certnumber,jdbcType=VARCHAR}
+	
+	</select>
+	<select id="findPeopleByCertNum" parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople">
+	select * from hx_people where CertNumber=#{certnumber,jdbcType=VARCHAR}
+	</select>
+	
+<select id="findPeopleByNameAndCertNum"  parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople">
+select * from hx_people where Name=#{arg0} and CertNumber=#{arg1}
+
+</select>
+	<select id="findPeopleByName" parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople">
+		select * from hx_people where name=#{name,jdbcType=VARCHAR}
+
+	</select>
+	<select id="findPeopleOnHxTeam" resultType="com.mengmaclub.model.HxPeople">
+		select * from hx_people where belongteam=#{belongteam,jdbcType=INTEGER}
+
+	</select>
+	<select id="findWhoNotFeed" resultType="com.mengmaclub.model.HxPeople">
+	select * from hx_people where (EligibleDat is null)  OR (YearFeeStatus !=2)
+	
+	</select>
+	<select id="findBelongTeam" parameterType="java.lang.Integer"
+		resultType="com.mengmaclub.model.HxTeam">
+		select * from hx_team where id=#{id,jdbcType=INTEGER}
+
+	</select>
+	<select id="findWhoFeed" resultType="com.mengmaclub.model.HxPeople">
+		select * from hx_people
+		where EligibleDat is not null and YEAR(EligibleDat) &gt;= YEAR(now())
+	</select>
+	<select id="showNum" resultType="java.lang.Integer">
+		SELECT COUNT(ID) FROM hx_people
+	</select>
+	<select id="findAll" resultType="com.mengmaclub.model.HxPeople">
+		select * from hx_people
+	</select>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from hx_people
+		where ID = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		hx_people
+		where ID = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.mengmaclub.model.HxPeople">
+		insert into hx_people (ID,
+		Name, SN,
+		Password,TeamName, BelongTeam, Gender,
+		City, BirthDay, Age,
+		Photo,
+		CertNumber, Occupation, PersonIntro,
+		YearFeeStatus,
+		MatchFeeStatus, ExamFeeStatus,
+		AddUser, AddTime, prop1,
+		prop2, prop3,
+		prop4,
+		YearFeePayDate, MatchFeePayDate, ExamFeePayDate,EligibleDat
+		)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{sn,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{teamname,jdbcType=VARCHAR},#{belongteam,jdbcType=INTEGER},
+		#{gender,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR},
+		#{birthday,jdbcType=DATE},
+		#{age,jdbcType=INTEGER},
+		#{photo,jdbcType=VARCHAR},
+		#{certnumber,jdbcType=VARCHAR},
+		#{occupation,jdbcType=VARCHAR},
+		#{personintro,jdbcType=VARCHAR},
+		#{yearfeestatus,jdbcType=INTEGER}, #{matchfeestatus,jdbcType=INTEGER},
+		#{examfeestatus,jdbcType=INTEGER},
+		#{adduser,jdbcType=VARCHAR},
+		#{addtime,jdbcType=DATE}, #{prop1,jdbcType=VARCHAR},
+		#{prop2,jdbcType=VARCHAR}, #{prop3,jdbcType=VARCHAR},
+		#{prop4,jdbcType=VARCHAR},
+		#{yearfeepaydate,jdbcType=DATE},
+		#{matchfeepaydate,jdbcType=DATE},
+		#{examfeepaydate,jdbcType=DATE},#{eligibledat,jdbcType=DATE}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.mengmaclub.model.HxPeople">
+		insert into hx_people
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="name != null">
+				Name,
+			</if>
+			<if test="sn != null">
+				SN,
+			</if>
+			<if test="password != null">
+				Password,
+			</if>
+			<if test="teamname != null">
+				TeamName,
+			</if>
+			<if test="belongteam != null">
+				BelongTeam,
+			</if>
+			<if test="gender != null">
+				Gender,
+			</if>
+			<if test="city != null">
+				City,
+			</if>
+			<if test="birthday != null">
+				BirthDay,
+			</if>
+			<if test="age != null">
+				Age,
+			</if>
+			<if test="photo != null">
+				Photo,
+			</if>
+			<if test="certnumber != null">
+				CertNumber,
+			</if>
+			<if test="occupation != null">
+				Occupation,
+			</if>
+			<if test="personintro != null">
+				PersonIntro,
+			</if>
+			<if test="yearfeestatus != null">
+				YearFeeStatus,
+			</if>
+			<if test="matchfeestatus != null">
+				MatchFeeStatus,
+			</if>
+			<if test="examfeestatus != null">
+				ExamFeeStatus,
+			</if>
+			<if test="adduser != null">
+				AddUser,
+			</if>
+			<if test="addtime != null">
+				AddTime,
+			</if>
+			<if test="prop1 != null">
+				prop1,
+			</if>
+			<if test="prop2 != null">
+				prop2,
+			</if>
+			<if test="prop3 != null">
+				prop3,
+			</if>
+			<if test="prop4 != null">
+				prop4,
+			</if>
+			<if test="yearfeepaydate != null">
+				YearFeePayDate,
+			</if>
+			<if test="matchfeepaydate != null">
+				MatchFeePayDate,
+			</if>
+			<if test="examfeepaydate != null">
+				ExamFeePayDate,
+			</if>
+			<if test="eligibledat != null">
+				EligibleDat,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sn != null">
+				#{sn,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="teamname != null">
+				#{teamname,jdbcType=VARCHAR},
+			</if>
+			<if test="belongteam != null">
+				#{belongteam,jdbcType=INTEGER},
+			</if>
+			<if test="gender != null">
+				#{gender,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=DATE},
+			</if>
+			<if test="age != null">
+				#{age,jdbcType=INTEGER},
+			</if>
+			<if test="photo != null">
+				#{photo,jdbcType=VARCHAR},
+			</if>
+			<if test="certnumber != null">
+				#{certnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="occupation != null">
+				#{occupation,jdbcType=VARCHAR},
+			</if>
+			<if test="personintro != null">
+				#{personintro,jdbcType=VARCHAR},
+			</if>
+			<if test="yearfeestatus != null">
+				#{yearfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="matchfeestatus != null">
+				#{matchfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="examfeestatus != null">
+				#{examfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="adduser != null">
+				#{adduser,jdbcType=VARCHAR},
+			</if>
+			<if test="addtime != null">
+				#{addtime,jdbcType=DATE},
+			</if>
+			<if test="prop1 != null">
+				#{prop1,jdbcType=VARCHAR},
+			</if>
+			<if test="prop2 != null">
+				#{prop2,jdbcType=VARCHAR},
+			</if>
+			<if test="prop3 != null">
+				#{prop3,jdbcType=VARCHAR},
+			</if>
+			<if test="prop4 != null">
+				#{prop4,jdbcType=VARCHAR},
+			</if>
+			<if test="yearfeepaydate != null">
+				#{yearfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="matchfeepaydate != null">
+				#{matchfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="examfeepaydate != null">
+				#{examfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="eligibledat != null">
+				#{eligibledat,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.HxPeople">
+		update hx_people
+		<set>
+			<if test="name != null">
+				Name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sn != null">
+				SN = #{sn,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				Password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="teamname != null">
+				TeamName = #{teamname,jdbcType=VARCHAR},
+			</if>
+			<if test="belongteam != null">
+				BelongTeam = #{belongteam,jdbcType=INTEGER},
+			</if>
+			<if test="gender != null">
+				Gender = #{gender,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				City = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				BirthDay = #{birthday,jdbcType=DATE},
+			</if>
+			<if test="age != null">
+				Age = #{age,jdbcType=INTEGER},
+			</if>
+			<if test="photo != null">
+				Photo = #{photo,jdbcType=VARCHAR},
+			</if>
+			<if test="certnumber != null">
+				CertNumber = #{certnumber,jdbcType=VARCHAR},
+			</if>
+			<if test="occupation != null">
+				Occupation = #{occupation,jdbcType=VARCHAR},
+			</if>
+			<if test="personintro != null">
+				PersonIntro = #{personintro,jdbcType=VARCHAR},
+			</if>
+			<if test="yearfeestatus != null">
+				YearFeeStatus = #{yearfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="matchfeestatus != null">
+				MatchFeeStatus = #{matchfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="examfeestatus != null">
+				ExamFeeStatus = #{examfeestatus,jdbcType=INTEGER},
+			</if>
+			<if test="adduser != null">
+				AddUser = #{adduser,jdbcType=VARCHAR},
+			</if>
+			<if test="addtime != null">
+				AddTime = #{addtime,jdbcType=DATE},
+			</if>
+			<if test="prop1 != null">
+				prop1 = #{prop1,jdbcType=VARCHAR},
+			</if>
+			<if test="prop2 != null">
+				prop2 = #{prop2,jdbcType=VARCHAR},
+			</if>
+			<if test="prop3 != null">
+				prop3 = #{prop3,jdbcType=VARCHAR},
+			</if>
+			<if test="prop4 != null">
+				prop4 = #{prop4,jdbcType=VARCHAR},
+			</if>
+			<if test="yearfeepaydate != null">
+				YearFeePayDate = #{yearfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="matchfeepaydate != null">
+				MatchFeePayDate = #{matchfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="examfeepaydate != null">
+				ExamFeePayDate = #{examfeepaydate,jdbcType=DATE},
+			</if>
+			<if test="eligibledat != null">
+				EligibleDat = #{eligibledat,jdbcType=DATE},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.HxPeople">
+		update hx_people
+		set Name = #{name,jdbcType=VARCHAR},
+		SN = #{sn,jdbcType=VARCHAR},
+		Password = #{password,jdbcType=VARCHAR},
+		TeamName =
+		#{teamname,jdbcType=VARCHAR},
+		BelongTeam =
+		#{belongteam,jdbcType=INTEGER},
+		Gender = #{gender,jdbcType=VARCHAR},
+		City = #{city,jdbcType=VARCHAR},
+		BirthDay = #{birthday,jdbcType=DATE},
+		Age = #{age,jdbcType=INTEGER},
+		Photo = #{photo,jdbcType=VARCHAR},
+		CertNumber = #{certnumber,jdbcType=VARCHAR},
+		Occupation =
+		#{occupation,jdbcType=VARCHAR},
+		PersonIntro =
+		#{personintro,jdbcType=VARCHAR},
+		YearFeeStatus =
+		#{yearfeestatus,jdbcType=INTEGER},
+		MatchFeeStatus =
+		#{matchfeestatus,jdbcType=INTEGER},
+		ExamFeeStatus =
+		#{examfeestatus,jdbcType=INTEGER},
+		AddUser =
+		#{adduser,jdbcType=VARCHAR},
+		AddTime = #{addtime,jdbcType=DATE},
+		prop1 =
+		#{prop1,jdbcType=VARCHAR},
+		prop2 = #{prop2,jdbcType=VARCHAR},
+		prop3 =
+		#{prop3,jdbcType=VARCHAR},
+		prop4 = #{prop4,jdbcType=VARCHAR},
+		YearFeePayDate = #{yearfeepaydate,jdbcType=DATE},
+		MatchFeePayDate =
+		#{matchfeepaydate,jdbcType=DATE},
+		ExamFeePayDate =
+		#{examfeepaydate,jdbcType=DATE},
+		EligibleDat
+		=#{eligibledat,jdbcType=DATE}
+		where ID = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!--通过身份证号查询数据 -->
+	<select id="selectByCertPeople" resultMap="BaseResultMap"
+		parameterType="com.mengmaclub.model.HxPeople">
+		select
+		<include refid="Base_Column_List" />
+		from hx_people
+		WHERE
+		<if test="certnumber!=null">
+			CertNumber = #{certnumber,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>

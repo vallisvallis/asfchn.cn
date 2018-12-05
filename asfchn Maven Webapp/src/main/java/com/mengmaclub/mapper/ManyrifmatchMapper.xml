@@ -1,0 +1,1449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.ManyrifmatchMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Manyrifmatch">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="joinpeopleid" jdbcType="INTEGER" property="joinpeopleid" />
+    <result column="turn" jdbcType="INTEGER" property="turn" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="score1one1rid" jdbcType="VARCHAR" property="score1one1rid" />
+    <result column="score2one1rid" jdbcType="VARCHAR" property="score2one1rid" />
+    <result column="score3one1rid" jdbcType="VARCHAR" property="score3one1rid" />
+    <result column="score4one1rid" jdbcType="VARCHAR" property="score4one1rid" />
+    <result column="score5one1rid" jdbcType="VARCHAR" property="score5one1rid" />
+    <result column="score6one1rid" jdbcType="VARCHAR" property="score6one1rid" />
+    <result column="score7one1rid" jdbcType="VARCHAR" property="score7one1rid" />
+    <result column="score8one1rid" jdbcType="VARCHAR" property="score8one1rid" />
+    <result column="score9one1rid" jdbcType="VARCHAR" property="score9one1rid" />
+    <result column="score10one1rid" jdbcType="VARCHAR" property="score10one1rid" />
+    <result column="score11one1rid" jdbcType="VARCHAR" property="score11one1rid" />
+    <result column="score12one1rid" jdbcType="VARCHAR" property="score12one1rid" />
+    <result column="score13on1erid" jdbcType="VARCHAR" property="score13on1erid" />
+    <result column="score14one1rid" jdbcType="VARCHAR" property="score14one1rid" />
+    <result column="score15one1rid" jdbcType="VARCHAR" property="score15one1rid" />
+    <result column="score16one1rid" jdbcType="VARCHAR" property="score16one1rid" />
+    <result column="score1two1rid" jdbcType="VARCHAR" property="score1two1rid" />
+    <result column="score2two1rid" jdbcType="VARCHAR" property="score2two1rid" />
+    <result column="score3two1rid" jdbcType="VARCHAR" property="score3two1rid" />
+    <result column="score4two1rid" jdbcType="VARCHAR" property="score4two1rid" />
+    <result column="score5two1rid" jdbcType="VARCHAR" property="score5two1rid" />
+    <result column="score6two1rid" jdbcType="VARCHAR" property="score6two1rid" />
+    <result column="score7two1rid" jdbcType="VARCHAR" property="score7two1rid" />
+    <result column="score8two1rid" jdbcType="VARCHAR" property="score8two1rid" />
+    <result column="score9two1rid" jdbcType="VARCHAR" property="score9two1rid" />
+    <result column="score10two1rid" jdbcType="VARCHAR" property="score10two1rid" />
+    <result column="score11two1rid" jdbcType="VARCHAR" property="score11two1rid" />
+    <result column="score12two1rid" jdbcType="VARCHAR" property="score12two1rid" />
+    <result column="score13two1rid" jdbcType="VARCHAR" property="score13two1rid" />
+    <result column="score14two1rid" jdbcType="VARCHAR" property="score14two1rid" />
+    <result column="score15two1rid" jdbcType="VARCHAR" property="score15two1rid" />
+    <result column="score16two1rid" jdbcType="VARCHAR" property="score16two1rid" />
+    <result column="score1one2rid" jdbcType="VARCHAR" property="score1one2rid" />
+    <result column="score2one2rid" jdbcType="VARCHAR" property="score2one2rid" />
+    <result column="score3one2rid" jdbcType="VARCHAR" property="score3one2rid" />
+    <result column="score4one2rid" jdbcType="VARCHAR" property="score4one2rid" />
+    <result column="score5one2rid" jdbcType="VARCHAR" property="score5one2rid" />
+    <result column="score6one2rid" jdbcType="VARCHAR" property="score6one2rid" />
+    <result column="score7one2rid" jdbcType="VARCHAR" property="score7one2rid" />
+    <result column="score8one2rid" jdbcType="VARCHAR" property="score8one2rid" />
+    <result column="score9one2rid" jdbcType="VARCHAR" property="score9one2rid" />
+    <result column="score10one2rid" jdbcType="VARCHAR" property="score10one2rid" />
+    <result column="score11one2rid" jdbcType="VARCHAR" property="score11one2rid" />
+    <result column="score12one2rid" jdbcType="VARCHAR" property="score12one2rid" />
+    <result column="score13one2rid" jdbcType="VARCHAR" property="score13one2rid" />
+    <result column="score14one2rid" jdbcType="VARCHAR" property="score14one2rid" />
+    <result column="score15one2rid" jdbcType="VARCHAR" property="score15one2rid" />
+    <result column="score16one2rid" jdbcType="VARCHAR" property="score16one2rid" />
+    <result column="score1two2rid" jdbcType="VARCHAR" property="score1two2rid" />
+    <result column="score2two2rid" jdbcType="VARCHAR" property="score2two2rid" />
+    <result column="score3two2rid" jdbcType="VARCHAR" property="score3two2rid" />
+    <result column="score4two2rid" jdbcType="VARCHAR" property="score4two2rid" />
+    <result column="score5two2rid" jdbcType="VARCHAR" property="score5two2rid" />
+    <result column="score6two2rid" jdbcType="VARCHAR" property="score6two2rid" />
+    <result column="score7two2rid" jdbcType="VARCHAR" property="score7two2rid" />
+    <result column="score8two2rid" jdbcType="VARCHAR" property="score8two2rid" />
+    <result column="score9two2rid" jdbcType="VARCHAR" property="score9two2rid" />
+    <result column="score10two2rid" jdbcType="VARCHAR" property="score10two2rid" />
+    <result column="score11two2rid" jdbcType="VARCHAR" property="score11two2rid" />
+    <result column="score12two2rid" jdbcType="VARCHAR" property="score12two2rid" />
+    <result column="score13two2rid" jdbcType="VARCHAR" property="score13two2rid" />
+    <result column="score14two2rid" jdbcType="VARCHAR" property="score14two2rid" />
+    <result column="score15two2rid" jdbcType="VARCHAR" property="score15two2rid" />
+    <result column="score16two2rid" jdbcType="VARCHAR" property="score16two2rid" />
+    <result column="score1one3rid" jdbcType="VARCHAR" property="score1one3rid" />
+    <result column="score2one3rid" jdbcType="VARCHAR" property="score2one3rid" />
+    <result column="score3one3rid" jdbcType="VARCHAR" property="score3one3rid" />
+    <result column="score4one3rid" jdbcType="VARCHAR" property="score4one3rid" />
+    <result column="score5one3rid" jdbcType="VARCHAR" property="score5one3rid" />
+    <result column="score6one3rid" jdbcType="VARCHAR" property="score6one3rid" />
+    <result column="score7one3rid" jdbcType="VARCHAR" property="score7one3rid" />
+    <result column="score8one3rid" jdbcType="VARCHAR" property="score8one3rid" />
+    <result column="score9one3rid" jdbcType="VARCHAR" property="score9one3rid" />
+    <result column="score10one3rid" jdbcType="VARCHAR" property="score10one3rid" />
+    <result column="score11one3rid" jdbcType="VARCHAR" property="score11one3rid" />
+    <result column="score12one3rid" jdbcType="VARCHAR" property="score12one3rid" />
+    <result column="score13one3rid" jdbcType="VARCHAR" property="score13one3rid" />
+    <result column="score14one3rid" jdbcType="VARCHAR" property="score14one3rid" />
+    <result column="score15one3rid" jdbcType="VARCHAR" property="score15one3rid" />
+    <result column="score16one3rid" jdbcType="VARCHAR" property="score16one3rid" />
+    <result column="score1two3rid" jdbcType="VARCHAR" property="score1two3rid" />
+    <result column="score2two3rid" jdbcType="VARCHAR" property="score2two3rid" />
+    <result column="score3two3rid" jdbcType="VARCHAR" property="score3two3rid" />
+    <result column="score4two3rid" jdbcType="VARCHAR" property="score4two3rid" />
+    <result column="score5two3rid" jdbcType="VARCHAR" property="score5two3rid" />
+    <result column="score6two3rid" jdbcType="VARCHAR" property="score6two3rid" />
+    <result column="score7two3rid" jdbcType="VARCHAR" property="score7two3rid" />
+    <result column="score8two3rid" jdbcType="VARCHAR" property="score8two3rid" />
+    <result column="score9two3rid" jdbcType="VARCHAR" property="score9two3rid" />
+    <result column="score10two3rid" jdbcType="VARCHAR" property="score10two3rid" />
+    <result column="score11two3rid" jdbcType="VARCHAR" property="score11two3rid" />
+    <result column="score12two3rid" jdbcType="VARCHAR" property="score12two3rid" />
+    <result column="score13two3rid" jdbcType="VARCHAR" property="score13two3rid" />
+    <result column="score14two3rid" jdbcType="VARCHAR" property="score14two3rid" />
+    <result column="score15two3rid" jdbcType="VARCHAR" property="score15two3rid" />
+    <result column="score16two3rid" jdbcType="VARCHAR" property="score16two3rid" />
+    <result column="scorefinal" jdbcType="VARCHAR" property="scorefinal" />
+    <result column="oneroundrid" jdbcType="INTEGER" property="oneroundrid" />
+    <result column="tworoundrid" jdbcType="INTEGER" property="tworoundrid" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="reward" jdbcType="VARCHAR" property="reward" />
+    <result column="isteammatch" jdbcType="INTEGER" property="isteammatch" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="joinmatch" jdbcType="INTEGER" property="joinmatch" />
+    <result column="joinlist" jdbcType="INTEGER" property="joinlist" />
+    <result column="joingage" jdbcType="INTEGER" property="joingage" />
+    <result column="oneroundisconfirm" jdbcType="INTEGER" property="oneroundisconfirm" />
+    <result column="tworoundisconfirm" jdbcType="INTEGER" property="tworoundisconfirm" />
+    <result column="scoreoneturn" jdbcType="VARCHAR" property="scoreoneturn" />
+    <result column="scoretwoturn" jdbcType="VARCHAR" property="scoretwoturn" />
+    <result column="scoreonebytranslate" jdbcType="DOUBLE" property="scoreonebytranslate" />
+    <result column="scoretwobytranslate" jdbcType="DOUBLE" property="scoretwobytranslate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn, name, joinpeopleid, turn, rank, score1one1rid, score2one1rid, score3one1rid, 
+    score4one1rid, score5one1rid, score6one1rid, score7one1rid, score8one1rid, score9one1rid, 
+    score10one1rid, score11one1rid, score12one1rid, score13on1erid, score14one1rid, score15one1rid, 
+    score16one1rid, score1two1rid, score2two1rid, score3two1rid, score4two1rid, score5two1rid, 
+    score6two1rid, score7two1rid, score8two1rid, score9two1rid, score10two1rid, score11two1rid, 
+    score12two1rid, score13two1rid, score14two1rid, score15two1rid, score16two1rid, score1one2rid, 
+    score2one2rid, score3one2rid, score4one2rid, score5one2rid, score6one2rid, score7one2rid, 
+    score8one2rid, score9one2rid, score10one2rid, score11one2rid, score12one2rid, score13one2rid, 
+    score14one2rid, score15one2rid, score16one2rid, score1two2rid, score2two2rid, score3two2rid, 
+    score4two2rid, score5two2rid, score6two2rid, score7two2rid, score8two2rid, score9two2rid, 
+    score10two2rid, score11two2rid, score12two2rid, score13two2rid, score14two2rid, score15two2rid, 
+    score16two2rid, score1one3rid, score2one3rid, score3one3rid, score4one3rid, score5one3rid, 
+    score6one3rid, score7one3rid, score8one3rid, score9one3rid, score10one3rid, score11one3rid, 
+    score12one3rid, score13one3rid, score14one3rid, score15one3rid, score16one3rid, score1two3rid, 
+    score2two3rid, score3two3rid, score4two3rid, score5two3rid, score6two3rid, score7two3rid, 
+    score8two3rid, score9two3rid, score10two3rid, score11two3rid, score12two3rid, score13two3rid, 
+    score14two3rid, score15two3rid, score16two3rid, scorefinal, oneroundrid, tworoundrid, 
+    teamname, reward, isteammatch, num, joinmatch, joinlist, joingage, oneroundisconfirm, 
+    tworoundisconfirm, scoreoneturn, scoretwoturn, scoreonebytranslate, scoretwobytranslate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from manyrifmatch
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findWhoJoinThisMatchThisListAndHasConfirm" parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Manyrifmatch">
+    SELECT
+	*
+FROM
+manyrifmatch	
+WHERE
+joinmatch=#{arg0}
+and joinlist=#{arg1}
+and joingage=#{arg2}
+  
+  </select>
+   <select id="findWhereIsMyListGagePeople"  parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Manyrifmatch">
+  select * from manyrifmatch where joinlist=#{arg0} and joingage=#{arg1}
+  
+  </select>
+  
+   <select id="findByJpId"  parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Manyrifmatch">
+  select * from   manyrifmatch where joinpeopleid=#{joinpeopleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from manyrifmatch
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Manyrifmatch">
+    insert into manyrifmatch (id, sn, name, 
+      joinpeopleid, turn, rank, 
+      score1one1rid, score2one1rid, score3one1rid, 
+      score4one1rid, score5one1rid, score6one1rid, 
+      score7one1rid, score8one1rid, score9one1rid, 
+      score10one1rid, score11one1rid, score12one1rid, 
+      score13on1erid, score14one1rid, score15one1rid, 
+      score16one1rid, score1two1rid, score2two1rid, 
+      score3two1rid, score4two1rid, score5two1rid, 
+      score6two1rid, score7two1rid, score8two1rid, 
+      score9two1rid, score10two1rid, score11two1rid, 
+      score12two1rid, score13two1rid, score14two1rid, 
+      score15two1rid, score16two1rid, score1one2rid, 
+      score2one2rid, score3one2rid, score4one2rid, 
+      score5one2rid, score6one2rid, score7one2rid, 
+      score8one2rid, score9one2rid, score10one2rid, 
+      score11one2rid, score12one2rid, score13one2rid, 
+      score14one2rid, score15one2rid, score16one2rid, 
+      score1two2rid, score2two2rid, score3two2rid, 
+      score4two2rid, score5two2rid, score6two2rid, 
+      score7two2rid, score8two2rid, score9two2rid, 
+      score10two2rid, score11two2rid, score12two2rid, 
+      score13two2rid, score14two2rid, score15two2rid, 
+      score16two2rid, score1one3rid, score2one3rid, 
+      score3one3rid, score4one3rid, score5one3rid, 
+      score6one3rid, score7one3rid, score8one3rid, 
+      score9one3rid, score10one3rid, score11one3rid, 
+      score12one3rid, score13one3rid, score14one3rid, 
+      score15one3rid, score16one3rid, score1two3rid, 
+      score2two3rid, score3two3rid, score4two3rid, 
+      score5two3rid, score6two3rid, score7two3rid, 
+      score8two3rid, score9two3rid, score10two3rid, 
+      score11two3rid, score12two3rid, score13two3rid, 
+      score14two3rid, score15two3rid, score16two3rid, 
+      scorefinal, oneroundrid, tworoundrid, 
+      teamname, reward, isteammatch, 
+      num, joinmatch, joinlist, 
+      joingage, oneroundisconfirm, tworoundisconfirm, 
+      scoreoneturn, scoretwoturn, scoreonebytranslate, 
+      scoretwobytranslate)
+    values (#{id,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{joinpeopleid,jdbcType=INTEGER}, #{turn,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{score1one1rid,jdbcType=VARCHAR}, #{score2one1rid,jdbcType=VARCHAR}, #{score3one1rid,jdbcType=VARCHAR}, 
+      #{score4one1rid,jdbcType=VARCHAR}, #{score5one1rid,jdbcType=VARCHAR}, #{score6one1rid,jdbcType=VARCHAR}, 
+      #{score7one1rid,jdbcType=VARCHAR}, #{score8one1rid,jdbcType=VARCHAR}, #{score9one1rid,jdbcType=VARCHAR}, 
+      #{score10one1rid,jdbcType=VARCHAR}, #{score11one1rid,jdbcType=VARCHAR}, #{score12one1rid,jdbcType=VARCHAR}, 
+      #{score13on1erid,jdbcType=VARCHAR}, #{score14one1rid,jdbcType=VARCHAR}, #{score15one1rid,jdbcType=VARCHAR}, 
+      #{score16one1rid,jdbcType=VARCHAR}, #{score1two1rid,jdbcType=VARCHAR}, #{score2two1rid,jdbcType=VARCHAR}, 
+      #{score3two1rid,jdbcType=VARCHAR}, #{score4two1rid,jdbcType=VARCHAR}, #{score5two1rid,jdbcType=VARCHAR}, 
+      #{score6two1rid,jdbcType=VARCHAR}, #{score7two1rid,jdbcType=VARCHAR}, #{score8two1rid,jdbcType=VARCHAR}, 
+      #{score9two1rid,jdbcType=VARCHAR}, #{score10two1rid,jdbcType=VARCHAR}, #{score11two1rid,jdbcType=VARCHAR}, 
+      #{score12two1rid,jdbcType=VARCHAR}, #{score13two1rid,jdbcType=VARCHAR}, #{score14two1rid,jdbcType=VARCHAR}, 
+      #{score15two1rid,jdbcType=VARCHAR}, #{score16two1rid,jdbcType=VARCHAR}, #{score1one2rid,jdbcType=VARCHAR}, 
+      #{score2one2rid,jdbcType=VARCHAR}, #{score3one2rid,jdbcType=VARCHAR}, #{score4one2rid,jdbcType=VARCHAR}, 
+      #{score5one2rid,jdbcType=VARCHAR}, #{score6one2rid,jdbcType=VARCHAR}, #{score7one2rid,jdbcType=VARCHAR}, 
+      #{score8one2rid,jdbcType=VARCHAR}, #{score9one2rid,jdbcType=VARCHAR}, #{score10one2rid,jdbcType=VARCHAR}, 
+      #{score11one2rid,jdbcType=VARCHAR}, #{score12one2rid,jdbcType=VARCHAR}, #{score13one2rid,jdbcType=VARCHAR}, 
+      #{score14one2rid,jdbcType=VARCHAR}, #{score15one2rid,jdbcType=VARCHAR}, #{score16one2rid,jdbcType=VARCHAR}, 
+      #{score1two2rid,jdbcType=VARCHAR}, #{score2two2rid,jdbcType=VARCHAR}, #{score3two2rid,jdbcType=VARCHAR}, 
+      #{score4two2rid,jdbcType=VARCHAR}, #{score5two2rid,jdbcType=VARCHAR}, #{score6two2rid,jdbcType=VARCHAR}, 
+      #{score7two2rid,jdbcType=VARCHAR}, #{score8two2rid,jdbcType=VARCHAR}, #{score9two2rid,jdbcType=VARCHAR}, 
+      #{score10two2rid,jdbcType=VARCHAR}, #{score11two2rid,jdbcType=VARCHAR}, #{score12two2rid,jdbcType=VARCHAR}, 
+      #{score13two2rid,jdbcType=VARCHAR}, #{score14two2rid,jdbcType=VARCHAR}, #{score15two2rid,jdbcType=VARCHAR}, 
+      #{score16two2rid,jdbcType=VARCHAR}, #{score1one3rid,jdbcType=VARCHAR}, #{score2one3rid,jdbcType=VARCHAR}, 
+      #{score3one3rid,jdbcType=VARCHAR}, #{score4one3rid,jdbcType=VARCHAR}, #{score5one3rid,jdbcType=VARCHAR}, 
+      #{score6one3rid,jdbcType=VARCHAR}, #{score7one3rid,jdbcType=VARCHAR}, #{score8one3rid,jdbcType=VARCHAR}, 
+      #{score9one3rid,jdbcType=VARCHAR}, #{score10one3rid,jdbcType=VARCHAR}, #{score11one3rid,jdbcType=VARCHAR}, 
+      #{score12one3rid,jdbcType=VARCHAR}, #{score13one3rid,jdbcType=VARCHAR}, #{score14one3rid,jdbcType=VARCHAR}, 
+      #{score15one3rid,jdbcType=VARCHAR}, #{score16one3rid,jdbcType=VARCHAR}, #{score1two3rid,jdbcType=VARCHAR}, 
+      #{score2two3rid,jdbcType=VARCHAR}, #{score3two3rid,jdbcType=VARCHAR}, #{score4two3rid,jdbcType=VARCHAR}, 
+      #{score5two3rid,jdbcType=VARCHAR}, #{score6two3rid,jdbcType=VARCHAR}, #{score7two3rid,jdbcType=VARCHAR}, 
+      #{score8two3rid,jdbcType=VARCHAR}, #{score9two3rid,jdbcType=VARCHAR}, #{score10two3rid,jdbcType=VARCHAR}, 
+      #{score11two3rid,jdbcType=VARCHAR}, #{score12two3rid,jdbcType=VARCHAR}, #{score13two3rid,jdbcType=VARCHAR}, 
+      #{score14two3rid,jdbcType=VARCHAR}, #{score15two3rid,jdbcType=VARCHAR}, #{score16two3rid,jdbcType=VARCHAR}, 
+      #{scorefinal,jdbcType=VARCHAR}, #{oneroundrid,jdbcType=INTEGER}, #{tworoundrid,jdbcType=INTEGER}, 
+      #{teamname,jdbcType=VARCHAR}, #{reward,jdbcType=VARCHAR}, #{isteammatch,jdbcType=INTEGER}, 
+      #{num,jdbcType=VARCHAR}, #{joinmatch,jdbcType=INTEGER}, #{joinlist,jdbcType=INTEGER}, 
+      #{joingage,jdbcType=INTEGER}, #{oneroundisconfirm,jdbcType=INTEGER}, #{tworoundisconfirm,jdbcType=INTEGER}, 
+      #{scoreoneturn,jdbcType=VARCHAR}, #{scoretwoturn,jdbcType=VARCHAR}, #{scoreonebytranslate,jdbcType=DOUBLE}, 
+      #{scoretwobytranslate,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Manyrifmatch">
+    insert into manyrifmatch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid,
+      </if>
+      <if test="turn != null">
+        turn,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="score1one1rid != null">
+        score1one1rid,
+      </if>
+      <if test="score2one1rid != null">
+        score2one1rid,
+      </if>
+      <if test="score3one1rid != null">
+        score3one1rid,
+      </if>
+      <if test="score4one1rid != null">
+        score4one1rid,
+      </if>
+      <if test="score5one1rid != null">
+        score5one1rid,
+      </if>
+      <if test="score6one1rid != null">
+        score6one1rid,
+      </if>
+      <if test="score7one1rid != null">
+        score7one1rid,
+      </if>
+      <if test="score8one1rid != null">
+        score8one1rid,
+      </if>
+      <if test="score9one1rid != null">
+        score9one1rid,
+      </if>
+      <if test="score10one1rid != null">
+        score10one1rid,
+      </if>
+      <if test="score11one1rid != null">
+        score11one1rid,
+      </if>
+      <if test="score12one1rid != null">
+        score12one1rid,
+      </if>
+      <if test="score13on1erid != null">
+        score13on1erid,
+      </if>
+      <if test="score14one1rid != null">
+        score14one1rid,
+      </if>
+      <if test="score15one1rid != null">
+        score15one1rid,
+      </if>
+      <if test="score16one1rid != null">
+        score16one1rid,
+      </if>
+      <if test="score1two1rid != null">
+        score1two1rid,
+      </if>
+      <if test="score2two1rid != null">
+        score2two1rid,
+      </if>
+      <if test="score3two1rid != null">
+        score3two1rid,
+      </if>
+      <if test="score4two1rid != null">
+        score4two1rid,
+      </if>
+      <if test="score5two1rid != null">
+        score5two1rid,
+      </if>
+      <if test="score6two1rid != null">
+        score6two1rid,
+      </if>
+      <if test="score7two1rid != null">
+        score7two1rid,
+      </if>
+      <if test="score8two1rid != null">
+        score8two1rid,
+      </if>
+      <if test="score9two1rid != null">
+        score9two1rid,
+      </if>
+      <if test="score10two1rid != null">
+        score10two1rid,
+      </if>
+      <if test="score11two1rid != null">
+        score11two1rid,
+      </if>
+      <if test="score12two1rid != null">
+        score12two1rid,
+      </if>
+      <if test="score13two1rid != null">
+        score13two1rid,
+      </if>
+      <if test="score14two1rid != null">
+        score14two1rid,
+      </if>
+      <if test="score15two1rid != null">
+        score15two1rid,
+      </if>
+      <if test="score16two1rid != null">
+        score16two1rid,
+      </if>
+      <if test="score1one2rid != null">
+        score1one2rid,
+      </if>
+      <if test="score2one2rid != null">
+        score2one2rid,
+      </if>
+      <if test="score3one2rid != null">
+        score3one2rid,
+      </if>
+      <if test="score4one2rid != null">
+        score4one2rid,
+      </if>
+      <if test="score5one2rid != null">
+        score5one2rid,
+      </if>
+      <if test="score6one2rid != null">
+        score6one2rid,
+      </if>
+      <if test="score7one2rid != null">
+        score7one2rid,
+      </if>
+      <if test="score8one2rid != null">
+        score8one2rid,
+      </if>
+      <if test="score9one2rid != null">
+        score9one2rid,
+      </if>
+      <if test="score10one2rid != null">
+        score10one2rid,
+      </if>
+      <if test="score11one2rid != null">
+        score11one2rid,
+      </if>
+      <if test="score12one2rid != null">
+        score12one2rid,
+      </if>
+      <if test="score13one2rid != null">
+        score13one2rid,
+      </if>
+      <if test="score14one2rid != null">
+        score14one2rid,
+      </if>
+      <if test="score15one2rid != null">
+        score15one2rid,
+      </if>
+      <if test="score16one2rid != null">
+        score16one2rid,
+      </if>
+      <if test="score1two2rid != null">
+        score1two2rid,
+      </if>
+      <if test="score2two2rid != null">
+        score2two2rid,
+      </if>
+      <if test="score3two2rid != null">
+        score3two2rid,
+      </if>
+      <if test="score4two2rid != null">
+        score4two2rid,
+      </if>
+      <if test="score5two2rid != null">
+        score5two2rid,
+      </if>
+      <if test="score6two2rid != null">
+        score6two2rid,
+      </if>
+      <if test="score7two2rid != null">
+        score7two2rid,
+      </if>
+      <if test="score8two2rid != null">
+        score8two2rid,
+      </if>
+      <if test="score9two2rid != null">
+        score9two2rid,
+      </if>
+      <if test="score10two2rid != null">
+        score10two2rid,
+      </if>
+      <if test="score11two2rid != null">
+        score11two2rid,
+      </if>
+      <if test="score12two2rid != null">
+        score12two2rid,
+      </if>
+      <if test="score13two2rid != null">
+        score13two2rid,
+      </if>
+      <if test="score14two2rid != null">
+        score14two2rid,
+      </if>
+      <if test="score15two2rid != null">
+        score15two2rid,
+      </if>
+      <if test="score16two2rid != null">
+        score16two2rid,
+      </if>
+      <if test="score1one3rid != null">
+        score1one3rid,
+      </if>
+      <if test="score2one3rid != null">
+        score2one3rid,
+      </if>
+      <if test="score3one3rid != null">
+        score3one3rid,
+      </if>
+      <if test="score4one3rid != null">
+        score4one3rid,
+      </if>
+      <if test="score5one3rid != null">
+        score5one3rid,
+      </if>
+      <if test="score6one3rid != null">
+        score6one3rid,
+      </if>
+      <if test="score7one3rid != null">
+        score7one3rid,
+      </if>
+      <if test="score8one3rid != null">
+        score8one3rid,
+      </if>
+      <if test="score9one3rid != null">
+        score9one3rid,
+      </if>
+      <if test="score10one3rid != null">
+        score10one3rid,
+      </if>
+      <if test="score11one3rid != null">
+        score11one3rid,
+      </if>
+      <if test="score12one3rid != null">
+        score12one3rid,
+      </if>
+      <if test="score13one3rid != null">
+        score13one3rid,
+      </if>
+      <if test="score14one3rid != null">
+        score14one3rid,
+      </if>
+      <if test="score15one3rid != null">
+        score15one3rid,
+      </if>
+      <if test="score16one3rid != null">
+        score16one3rid,
+      </if>
+      <if test="score1two3rid != null">
+        score1two3rid,
+      </if>
+      <if test="score2two3rid != null">
+        score2two3rid,
+      </if>
+      <if test="score3two3rid != null">
+        score3two3rid,
+      </if>
+      <if test="score4two3rid != null">
+        score4two3rid,
+      </if>
+      <if test="score5two3rid != null">
+        score5two3rid,
+      </if>
+      <if test="score6two3rid != null">
+        score6two3rid,
+      </if>
+      <if test="score7two3rid != null">
+        score7two3rid,
+      </if>
+      <if test="score8two3rid != null">
+        score8two3rid,
+      </if>
+      <if test="score9two3rid != null">
+        score9two3rid,
+      </if>
+      <if test="score10two3rid != null">
+        score10two3rid,
+      </if>
+      <if test="score11two3rid != null">
+        score11two3rid,
+      </if>
+      <if test="score12two3rid != null">
+        score12two3rid,
+      </if>
+      <if test="score13two3rid != null">
+        score13two3rid,
+      </if>
+      <if test="score14two3rid != null">
+        score14two3rid,
+      </if>
+      <if test="score15two3rid != null">
+        score15two3rid,
+      </if>
+      <if test="score16two3rid != null">
+        score16two3rid,
+      </if>
+      <if test="scorefinal != null">
+        scorefinal,
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid,
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+      <if test="reward != null">
+        reward,
+      </if>
+      <if test="isteammatch != null">
+        isteammatch,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="joinmatch != null">
+        joinmatch,
+      </if>
+      <if test="joinlist != null">
+        joinlist,
+      </if>
+      <if test="joingage != null">
+        joingage,
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm,
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm,
+      </if>
+      <if test="scoreoneturn != null">
+        scoreoneturn,
+      </if>
+      <if test="scoretwoturn != null">
+        scoretwoturn,
+      </if>
+      <if test="scoreonebytranslate != null">
+        scoreonebytranslate,
+      </if>
+      <if test="scoretwobytranslate != null">
+        scoretwobytranslate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="score1one1rid != null">
+        #{score1one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one1rid != null">
+        #{score2one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one1rid != null">
+        #{score3one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one1rid != null">
+        #{score4one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one1rid != null">
+        #{score5one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one1rid != null">
+        #{score6one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one1rid != null">
+        #{score7one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one1rid != null">
+        #{score8one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one1rid != null">
+        #{score9one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one1rid != null">
+        #{score10one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one1rid != null">
+        #{score11one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one1rid != null">
+        #{score12one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13on1erid != null">
+        #{score13on1erid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one1rid != null">
+        #{score14one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one1rid != null">
+        #{score15one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one1rid != null">
+        #{score16one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two1rid != null">
+        #{score1two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two1rid != null">
+        #{score2two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two1rid != null">
+        #{score3two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two1rid != null">
+        #{score4two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two1rid != null">
+        #{score5two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two1rid != null">
+        #{score6two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two1rid != null">
+        #{score7two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two1rid != null">
+        #{score8two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two1rid != null">
+        #{score9two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two1rid != null">
+        #{score10two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two1rid != null">
+        #{score11two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two1rid != null">
+        #{score12two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two1rid != null">
+        #{score13two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two1rid != null">
+        #{score14two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two1rid != null">
+        #{score15two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two1rid != null">
+        #{score16two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1one2rid != null">
+        #{score1one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one2rid != null">
+        #{score2one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one2rid != null">
+        #{score3one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one2rid != null">
+        #{score4one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one2rid != null">
+        #{score5one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one2rid != null">
+        #{score6one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one2rid != null">
+        #{score7one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one2rid != null">
+        #{score8one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one2rid != null">
+        #{score9one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one2rid != null">
+        #{score10one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one2rid != null">
+        #{score11one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one2rid != null">
+        #{score12one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13one2rid != null">
+        #{score13one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one2rid != null">
+        #{score14one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one2rid != null">
+        #{score15one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one2rid != null">
+        #{score16one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two2rid != null">
+        #{score1two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two2rid != null">
+        #{score2two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two2rid != null">
+        #{score3two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two2rid != null">
+        #{score4two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two2rid != null">
+        #{score5two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two2rid != null">
+        #{score6two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two2rid != null">
+        #{score7two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two2rid != null">
+        #{score8two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two2rid != null">
+        #{score9two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two2rid != null">
+        #{score10two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two2rid != null">
+        #{score11two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two2rid != null">
+        #{score12two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two2rid != null">
+        #{score13two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two2rid != null">
+        #{score14two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two2rid != null">
+        #{score15two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two2rid != null">
+        #{score16two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1one3rid != null">
+        #{score1one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one3rid != null">
+        #{score2one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one3rid != null">
+        #{score3one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one3rid != null">
+        #{score4one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one3rid != null">
+        #{score5one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one3rid != null">
+        #{score6one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one3rid != null">
+        #{score7one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one3rid != null">
+        #{score8one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one3rid != null">
+        #{score9one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one3rid != null">
+        #{score10one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one3rid != null">
+        #{score11one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one3rid != null">
+        #{score12one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13one3rid != null">
+        #{score13one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one3rid != null">
+        #{score14one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one3rid != null">
+        #{score15one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one3rid != null">
+        #{score16one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two3rid != null">
+        #{score1two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two3rid != null">
+        #{score2two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two3rid != null">
+        #{score3two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two3rid != null">
+        #{score4two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two3rid != null">
+        #{score5two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two3rid != null">
+        #{score6two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two3rid != null">
+        #{score7two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two3rid != null">
+        #{score8two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two3rid != null">
+        #{score9two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two3rid != null">
+        #{score10two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two3rid != null">
+        #{score11two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two3rid != null">
+        #{score12two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two3rid != null">
+        #{score13two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two3rid != null">
+        #{score14two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two3rid != null">
+        #{score15two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two3rid != null">
+        #{score16two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="scorefinal != null">
+        #{scorefinal,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingage != null">
+        #{joingage,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="scoreoneturn != null">
+        #{scoreoneturn,jdbcType=VARCHAR},
+      </if>
+      <if test="scoretwoturn != null">
+        #{scoretwoturn,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreonebytranslate != null">
+        #{scoreonebytranslate,jdbcType=DOUBLE},
+      </if>
+      <if test="scoretwobytranslate != null">
+        #{scoretwobytranslate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Manyrifmatch">
+    update manyrifmatch
+    <set>
+      <if test="sn != null">
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        turn = #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="score1one1rid != null">
+        score1one1rid = #{score1one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one1rid != null">
+        score2one1rid = #{score2one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one1rid != null">
+        score3one1rid = #{score3one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one1rid != null">
+        score4one1rid = #{score4one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one1rid != null">
+        score5one1rid = #{score5one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one1rid != null">
+        score6one1rid = #{score6one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one1rid != null">
+        score7one1rid = #{score7one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one1rid != null">
+        score8one1rid = #{score8one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one1rid != null">
+        score9one1rid = #{score9one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one1rid != null">
+        score10one1rid = #{score10one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one1rid != null">
+        score11one1rid = #{score11one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one1rid != null">
+        score12one1rid = #{score12one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13on1erid != null">
+        score13on1erid = #{score13on1erid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one1rid != null">
+        score14one1rid = #{score14one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one1rid != null">
+        score15one1rid = #{score15one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one1rid != null">
+        score16one1rid = #{score16one1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two1rid != null">
+        score1two1rid = #{score1two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two1rid != null">
+        score2two1rid = #{score2two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two1rid != null">
+        score3two1rid = #{score3two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two1rid != null">
+        score4two1rid = #{score4two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two1rid != null">
+        score5two1rid = #{score5two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two1rid != null">
+        score6two1rid = #{score6two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two1rid != null">
+        score7two1rid = #{score7two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two1rid != null">
+        score8two1rid = #{score8two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two1rid != null">
+        score9two1rid = #{score9two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two1rid != null">
+        score10two1rid = #{score10two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two1rid != null">
+        score11two1rid = #{score11two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two1rid != null">
+        score12two1rid = #{score12two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two1rid != null">
+        score13two1rid = #{score13two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two1rid != null">
+        score14two1rid = #{score14two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two1rid != null">
+        score15two1rid = #{score15two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two1rid != null">
+        score16two1rid = #{score16two1rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1one2rid != null">
+        score1one2rid = #{score1one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one2rid != null">
+        score2one2rid = #{score2one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one2rid != null">
+        score3one2rid = #{score3one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one2rid != null">
+        score4one2rid = #{score4one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one2rid != null">
+        score5one2rid = #{score5one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one2rid != null">
+        score6one2rid = #{score6one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one2rid != null">
+        score7one2rid = #{score7one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one2rid != null">
+        score8one2rid = #{score8one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one2rid != null">
+        score9one2rid = #{score9one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one2rid != null">
+        score10one2rid = #{score10one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one2rid != null">
+        score11one2rid = #{score11one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one2rid != null">
+        score12one2rid = #{score12one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13one2rid != null">
+        score13one2rid = #{score13one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one2rid != null">
+        score14one2rid = #{score14one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one2rid != null">
+        score15one2rid = #{score15one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one2rid != null">
+        score16one2rid = #{score16one2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two2rid != null">
+        score1two2rid = #{score1two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two2rid != null">
+        score2two2rid = #{score2two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two2rid != null">
+        score3two2rid = #{score3two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two2rid != null">
+        score4two2rid = #{score4two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two2rid != null">
+        score5two2rid = #{score5two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two2rid != null">
+        score6two2rid = #{score6two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two2rid != null">
+        score7two2rid = #{score7two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two2rid != null">
+        score8two2rid = #{score8two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two2rid != null">
+        score9two2rid = #{score9two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two2rid != null">
+        score10two2rid = #{score10two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two2rid != null">
+        score11two2rid = #{score11two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two2rid != null">
+        score12two2rid = #{score12two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two2rid != null">
+        score13two2rid = #{score13two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two2rid != null">
+        score14two2rid = #{score14two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two2rid != null">
+        score15two2rid = #{score15two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two2rid != null">
+        score16two2rid = #{score16two2rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1one3rid != null">
+        score1one3rid = #{score1one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2one3rid != null">
+        score2one3rid = #{score2one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3one3rid != null">
+        score3one3rid = #{score3one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4one3rid != null">
+        score4one3rid = #{score4one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5one3rid != null">
+        score5one3rid = #{score5one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6one3rid != null">
+        score6one3rid = #{score6one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7one3rid != null">
+        score7one3rid = #{score7one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8one3rid != null">
+        score8one3rid = #{score8one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9one3rid != null">
+        score9one3rid = #{score9one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10one3rid != null">
+        score10one3rid = #{score10one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11one3rid != null">
+        score11one3rid = #{score11one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12one3rid != null">
+        score12one3rid = #{score12one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13one3rid != null">
+        score13one3rid = #{score13one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14one3rid != null">
+        score14one3rid = #{score14one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15one3rid != null">
+        score15one3rid = #{score15one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16one3rid != null">
+        score16one3rid = #{score16one3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score1two3rid != null">
+        score1two3rid = #{score1two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score2two3rid != null">
+        score2two3rid = #{score2two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score3two3rid != null">
+        score3two3rid = #{score3two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score4two3rid != null">
+        score4two3rid = #{score4two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score5two3rid != null">
+        score5two3rid = #{score5two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score6two3rid != null">
+        score6two3rid = #{score6two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score7two3rid != null">
+        score7two3rid = #{score7two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score8two3rid != null">
+        score8two3rid = #{score8two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score9two3rid != null">
+        score9two3rid = #{score9two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score10two3rid != null">
+        score10two3rid = #{score10two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score11two3rid != null">
+        score11two3rid = #{score11two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score12two3rid != null">
+        score12two3rid = #{score12two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score13two3rid != null">
+        score13two3rid = #{score13two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score14two3rid != null">
+        score14two3rid = #{score14two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score15two3rid != null">
+        score15two3rid = #{score15two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="score16two3rid != null">
+        score16two3rid = #{score16two3rid,jdbcType=VARCHAR},
+      </if>
+      <if test="scorefinal != null">
+        scorefinal = #{scorefinal,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        reward = #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        isteammatch = #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        joinmatch = #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        joinlist = #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingage != null">
+        joingage = #{joingage,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="scoreoneturn != null">
+        scoreoneturn = #{scoreoneturn,jdbcType=VARCHAR},
+      </if>
+      <if test="scoretwoturn != null">
+        scoretwoturn = #{scoretwoturn,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreonebytranslate != null">
+        scoreonebytranslate = #{scoreonebytranslate,jdbcType=DOUBLE},
+      </if>
+      <if test="scoretwobytranslate != null">
+        scoretwobytranslate = #{scoretwobytranslate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Manyrifmatch">
+    update manyrifmatch
+    set sn = #{sn,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      turn = #{turn,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=INTEGER},
+      score1one1rid = #{score1one1rid,jdbcType=VARCHAR},
+      score2one1rid = #{score2one1rid,jdbcType=VARCHAR},
+      score3one1rid = #{score3one1rid,jdbcType=VARCHAR},
+      score4one1rid = #{score4one1rid,jdbcType=VARCHAR},
+      score5one1rid = #{score5one1rid,jdbcType=VARCHAR},
+      score6one1rid = #{score6one1rid,jdbcType=VARCHAR},
+      score7one1rid = #{score7one1rid,jdbcType=VARCHAR},
+      score8one1rid = #{score8one1rid,jdbcType=VARCHAR},
+      score9one1rid = #{score9one1rid,jdbcType=VARCHAR},
+      score10one1rid = #{score10one1rid,jdbcType=VARCHAR},
+      score11one1rid = #{score11one1rid,jdbcType=VARCHAR},
+      score12one1rid = #{score12one1rid,jdbcType=VARCHAR},
+      score13on1erid = #{score13on1erid,jdbcType=VARCHAR},
+      score14one1rid = #{score14one1rid,jdbcType=VARCHAR},
+      score15one1rid = #{score15one1rid,jdbcType=VARCHAR},
+      score16one1rid = #{score16one1rid,jdbcType=VARCHAR},
+      score1two1rid = #{score1two1rid,jdbcType=VARCHAR},
+      score2two1rid = #{score2two1rid,jdbcType=VARCHAR},
+      score3two1rid = #{score3two1rid,jdbcType=VARCHAR},
+      score4two1rid = #{score4two1rid,jdbcType=VARCHAR},
+      score5two1rid = #{score5two1rid,jdbcType=VARCHAR},
+      score6two1rid = #{score6two1rid,jdbcType=VARCHAR},
+      score7two1rid = #{score7two1rid,jdbcType=VARCHAR},
+      score8two1rid = #{score8two1rid,jdbcType=VARCHAR},
+      score9two1rid = #{score9two1rid,jdbcType=VARCHAR},
+      score10two1rid = #{score10two1rid,jdbcType=VARCHAR},
+      score11two1rid = #{score11two1rid,jdbcType=VARCHAR},
+      score12two1rid = #{score12two1rid,jdbcType=VARCHAR},
+      score13two1rid = #{score13two1rid,jdbcType=VARCHAR},
+      score14two1rid = #{score14two1rid,jdbcType=VARCHAR},
+      score15two1rid = #{score15two1rid,jdbcType=VARCHAR},
+      score16two1rid = #{score16two1rid,jdbcType=VARCHAR},
+      score1one2rid = #{score1one2rid,jdbcType=VARCHAR},
+      score2one2rid = #{score2one2rid,jdbcType=VARCHAR},
+      score3one2rid = #{score3one2rid,jdbcType=VARCHAR},
+      score4one2rid = #{score4one2rid,jdbcType=VARCHAR},
+      score5one2rid = #{score5one2rid,jdbcType=VARCHAR},
+      score6one2rid = #{score6one2rid,jdbcType=VARCHAR},
+      score7one2rid = #{score7one2rid,jdbcType=VARCHAR},
+      score8one2rid = #{score8one2rid,jdbcType=VARCHAR},
+      score9one2rid = #{score9one2rid,jdbcType=VARCHAR},
+      score10one2rid = #{score10one2rid,jdbcType=VARCHAR},
+      score11one2rid = #{score11one2rid,jdbcType=VARCHAR},
+      score12one2rid = #{score12one2rid,jdbcType=VARCHAR},
+      score13one2rid = #{score13one2rid,jdbcType=VARCHAR},
+      score14one2rid = #{score14one2rid,jdbcType=VARCHAR},
+      score15one2rid = #{score15one2rid,jdbcType=VARCHAR},
+      score16one2rid = #{score16one2rid,jdbcType=VARCHAR},
+      score1two2rid = #{score1two2rid,jdbcType=VARCHAR},
+      score2two2rid = #{score2two2rid,jdbcType=VARCHAR},
+      score3two2rid = #{score3two2rid,jdbcType=VARCHAR},
+      score4two2rid = #{score4two2rid,jdbcType=VARCHAR},
+      score5two2rid = #{score5two2rid,jdbcType=VARCHAR},
+      score6two2rid = #{score6two2rid,jdbcType=VARCHAR},
+      score7two2rid = #{score7two2rid,jdbcType=VARCHAR},
+      score8two2rid = #{score8two2rid,jdbcType=VARCHAR},
+      score9two2rid = #{score9two2rid,jdbcType=VARCHAR},
+      score10two2rid = #{score10two2rid,jdbcType=VARCHAR},
+      score11two2rid = #{score11two2rid,jdbcType=VARCHAR},
+      score12two2rid = #{score12two2rid,jdbcType=VARCHAR},
+      score13two2rid = #{score13two2rid,jdbcType=VARCHAR},
+      score14two2rid = #{score14two2rid,jdbcType=VARCHAR},
+      score15two2rid = #{score15two2rid,jdbcType=VARCHAR},
+      score16two2rid = #{score16two2rid,jdbcType=VARCHAR},
+      score1one3rid = #{score1one3rid,jdbcType=VARCHAR},
+      score2one3rid = #{score2one3rid,jdbcType=VARCHAR},
+      score3one3rid = #{score3one3rid,jdbcType=VARCHAR},
+      score4one3rid = #{score4one3rid,jdbcType=VARCHAR},
+      score5one3rid = #{score5one3rid,jdbcType=VARCHAR},
+      score6one3rid = #{score6one3rid,jdbcType=VARCHAR},
+      score7one3rid = #{score7one3rid,jdbcType=VARCHAR},
+      score8one3rid = #{score8one3rid,jdbcType=VARCHAR},
+      score9one3rid = #{score9one3rid,jdbcType=VARCHAR},
+      score10one3rid = #{score10one3rid,jdbcType=VARCHAR},
+      score11one3rid = #{score11one3rid,jdbcType=VARCHAR},
+      score12one3rid = #{score12one3rid,jdbcType=VARCHAR},
+      score13one3rid = #{score13one3rid,jdbcType=VARCHAR},
+      score14one3rid = #{score14one3rid,jdbcType=VARCHAR},
+      score15one3rid = #{score15one3rid,jdbcType=VARCHAR},
+      score16one3rid = #{score16one3rid,jdbcType=VARCHAR},
+      score1two3rid = #{score1two3rid,jdbcType=VARCHAR},
+      score2two3rid = #{score2two3rid,jdbcType=VARCHAR},
+      score3two3rid = #{score3two3rid,jdbcType=VARCHAR},
+      score4two3rid = #{score4two3rid,jdbcType=VARCHAR},
+      score5two3rid = #{score5two3rid,jdbcType=VARCHAR},
+      score6two3rid = #{score6two3rid,jdbcType=VARCHAR},
+      score7two3rid = #{score7two3rid,jdbcType=VARCHAR},
+      score8two3rid = #{score8two3rid,jdbcType=VARCHAR},
+      score9two3rid = #{score9two3rid,jdbcType=VARCHAR},
+      score10two3rid = #{score10two3rid,jdbcType=VARCHAR},
+      score11two3rid = #{score11two3rid,jdbcType=VARCHAR},
+      score12two3rid = #{score12two3rid,jdbcType=VARCHAR},
+      score13two3rid = #{score13two3rid,jdbcType=VARCHAR},
+      score14two3rid = #{score14two3rid,jdbcType=VARCHAR},
+      score15two3rid = #{score15two3rid,jdbcType=VARCHAR},
+      score16two3rid = #{score16two3rid,jdbcType=VARCHAR},
+      scorefinal = #{scorefinal,jdbcType=VARCHAR},
+      oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      reward = #{reward,jdbcType=VARCHAR},
+      isteammatch = #{isteammatch,jdbcType=INTEGER},
+      num = #{num,jdbcType=VARCHAR},
+      joinmatch = #{joinmatch,jdbcType=INTEGER},
+      joinlist = #{joinlist,jdbcType=INTEGER},
+      joingage = #{joingage,jdbcType=INTEGER},
+      oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER},
+      scoreoneturn = #{scoreoneturn,jdbcType=VARCHAR},
+      scoretwoturn = #{scoretwoturn,jdbcType=VARCHAR},
+      scoreonebytranslate = #{scoreonebytranslate,jdbcType=DOUBLE},
+      scoretwobytranslate = #{scoretwobytranslate,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

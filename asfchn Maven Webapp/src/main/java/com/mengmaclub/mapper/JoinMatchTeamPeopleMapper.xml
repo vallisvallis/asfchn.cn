@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.JoinMatchTeamPeopleMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.JoinMatchTeamPeople">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="Job" jdbcType="INTEGER" property="job" />
+    <result column="JobName" jdbcType="VARCHAR" property="jobname" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="PeopleID" jdbcType="INTEGER" property="peopleid" />
+    <result column="PeopleGender" jdbcType="VARCHAR" property="peoplegender" />
+    <result column="PeopleSn" jdbcType="VARCHAR" property="peoplesn" />
+    <result column="JoinMatchLIst" jdbcType="INTEGER" property="joinmatchlist" />
+    <result column="JoinMatchListInName" jdbcType="VARCHAR" property="joinmatchlistinname" />
+    <result column="gage" jdbcType="INTEGER" property="gage" />
+    <result column="Pinlv" jdbcType="VARCHAR" property="pinlv" />
+    <result column="isTeamMatchList" jdbcType="VARCHAR" property="isteammatchlist" />
+    <result column="teamId" jdbcType="INTEGER" property="teamid" />
+    <result column="matchid" jdbcType="INTEGER" property="matchid" />
+    <result column="matchname" jdbcType="VARCHAR" property="matchname" />
+    <result column="joinwhichjointeam" jdbcType="INTEGER" property="joinwhichjointeam" />
+    <result column="score1" jdbcType="VARCHAR" property="score1" />
+    <result column="score2" jdbcType="VARCHAR" property="score2" />
+    <result column="score3" jdbcType="VARCHAR" property="score3" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Job, JobName, Name, PeopleID, PeopleGender, PeopleSn, JoinMatchLIst, JoinMatchListInName, 
+    gage, Pinlv, isTeamMatchList, teamId,matchid,matchname,joinwhichjointeam,score1,score2,score3,teamname
+  </sql>
+  
+   <select id="findmes" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where peopleid=#{arg0} and matchid=#{arg1}
+  
+  </select>
+  <!-- 查找此队伍中的运动员 -->
+  <select id="findjob3" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT
+	j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+	join_match_team AS jt
+WHERE
+j.joinwhichjointeam=jt.ID
+and 
+j.Job=3
+and 
+jt.ID=#{id,jdbcType=INTEGER}
+  </select> 
+  <!--  -->
+  <select id="findjob1" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT
+	j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+	join_match_team AS jt
+WHERE
+j.joinwhichjointeam=jt.ID
+and 
+j.Job=1
+and 
+jt.ID=#{id,jdbcType=INTEGER}
+  </select> 
+  <select id="findjob2" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+ SELECT
+	j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+	join_match_team AS jt
+WHERE
+j.joinwhichjointeam=jt.ID
+and 
+j.Job=2
+and 
+jt.ID=#{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findThisMatchThisMatchlist" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  
+SELECT
+j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+	join_match_team as jt
+	
+WHERE
+	j.matchid =#{arg0}
+and j.joinwhichjointeam=jt.ID
+and j.JoinMatchLIst=#{arg1}
+and jt.IsConfirm=2
+  
+  </select>
+  
+  <select id="findList8" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  
+  SELECT
+	j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+join_match_team as jt
+WHERE
+	j.matchid = #{matchid,jdbcType=INTEGER}
+AND j.joinwhichjointeam = jt.id
+and 
+jt.IsConfirm=2
+and JoinMatchLIst=8
+  </select>
+    <select id="showthismatchListpeopleScore" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where JoinMatchLIst=#{joinmatchlist,jdbcType=INTEGER}
+  
+  </select>
+  <!-- 这次比赛这次项目参加了多少人 -->
+  <select id="showPeopleWhoJoinThisMatchAndThisMatchList" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where JoinMatchLIst=#{arg0} and matchid=#{arg1}
+  </select>
+  
+  <select id="findteammatch">
+SELECT * from join_match_team_people where isTeamMatchList=1 
+  </select>
+  <select id="findme" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where peopleid=#{peopleid,jdbcType=INTEGER} and matchid=21
+  
+  </select>
+  <select id="showSelectPeople"    resultType="com.mengmaclub.model.JoinMatchTeamPeople" >  
+  SELECT
+ j.ID, j.Job, j.JobName,j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName,      j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname 
+FROM
+	join_match_team_people AS j,
+	join_match_team as jt
+	
+WHERE
+	j.matchid = #{arg0}
+
+and j.joinwhichjointeam=jt.ID
+
+and j.JoinMatchLIst=#{arg1}
+	and j.gage=#{arg2}
+and jt.IsConfirm=2
+  </select>
+  
+  <select id="findmyfriend"  parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT
+ j.ID, j.Job, j.JobName,j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName,      j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname 
+FROM
+	join_match_team_people AS j,
+	join_match_team as jt
+	
+WHERE
+	j.matchid = #{arg0}
+
+and j.joinwhichjointeam=jt.ID
+
+and j.JoinMatchLIst=8
+	and j.gage=#{arg1}
+	and j.joinwhichjointeam=#{arg2}
+and jt.IsConfirm=2
+  </select>
+  <select id="findwhocanjoinexam" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where matchid=21
+  </select>
+  <select id="findthisjoinTeamPeople" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT * FROM join_match_team_people where joinwhichjointeam=#{joinwhichjointeam,jdbcType=INTEGER}
+  </select>
+  <select id="findthisTeamwhojoinlist8" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+   SELECT
+ j.ID, j.Job, j.JobName,j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName,      j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname 
+FROM
+	join_match_team_people AS j,
+	join_match_team as jt
+	
+WHERE
+	j.matchid = #{arg0}
+
+and j.joinwhichjointeam=jt.ID
+
+and j.JoinMatchLIst=8
+
+	and j.joinwhichjointeam=#{arg1}
+and jt.IsConfirm=2
+  
+  
+  </select>
+ <select id="findThisMatchjoinPeople" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+SELECT
+	 j.ID, j.Job, j.JobName, j.Name, j.PeopleID, j.PeopleGender, j.PeopleSn, j.JoinMatchLIst, j.JoinMatchListInName, 
+    j.gage, j.Pinlv, j.isTeamMatchList, j.teamId,j.matchid,j.matchname,j.joinwhichjointeam,j.score1,j.score2,j.score3,j.teamname
+FROM
+	join_match_team_people AS j,
+	join_match_team AS jt,
+	hx_people AS h
+WHERE
+	j.matchid = #{matchid,jdbcType=INTEGER}
+AND j.joinwhichjointeam = jt.id
+AND h.SN = j.PeopleSn
+AND jt.isconfirm=2
+ </select> 
+  <select id="findThisTeamJoinPeople" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people where teamId=#{teamid,jdbcType=INTEGER}
+  </select>
+  <select id="findAll" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  select * from join_match_team_people
+  
+  </select>
+  <select id="findwhoisTeamMatch" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT * from join_match_team_people where isTeamMatchList=1 and joinwhichjointeam=#{joinwhichjointeam,jdbcType=INTEGER}
+  
+  
+  </select>
+  <select id="findwhoisTeamMatchSmall" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT * from join_match_team_people where  (gage=1 or gage=2) and isTeamMatchList=1 and joinwhichjointeam=#{joinwhichjointeam,jdbcType=INTEGER} 
+  
+  
+  </select>
+  <select id="findwhoisTeamMatchMiddle" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT * from join_match_team_people where  (gage=3 or gage=4) and isTeamMatchList=1 and joinwhichjointeam=#{joinwhichjointeam,jdbcType=INTEGER}
+  
+  
+  </select>
+  <select id="findwhoisTeamMatchHigh" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeamPeople">
+  SELECT * from join_match_team_people where  (gage=5 or gage=6) and isTeamMatchList=1 and joinwhichjointeam=#{joinwhichjointeam,jdbcType=INTEGER}
+  
+  
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from join_match_team_people
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from join_match_team_people
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteJoinPeoplewhoisNoConfirm" parameterType="java.lang.Integer">
+   delete from join_match_team_people
+    where joinwhichjointeam = #{joinwhichjointeam,jdbcType=INTEGER}
+  
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.JoinMatchTeamPeople">
+    insert into join_match_team_people (ID, Job, JobName, 
+      Name, PeopleID, PeopleGender, 
+      PeopleSn, JoinMatchLIst, JoinMatchListInName, 
+      gage, Pinlv, isTeamMatchList, 
+      teamId,matchid,matchname,joinwhichjointeam,score1,score2,score3,teamname)
+    values (#{id,jdbcType=INTEGER}, #{job,jdbcType=INTEGER}, #{jobname,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{peopleid,jdbcType=INTEGER}, #{peoplegender,jdbcType=VARCHAR}, 
+      #{peoplesn,jdbcType=VARCHAR}, #{joinmatchlist,jdbcType=INTEGER}, #{joinmatchlistinname,jdbcType=VARCHAR}, 
+      #{gage,jdbcType=INTEGER}, #{pinlv,jdbcType=VARCHAR}, #{isteammatchlist,jdbcType=VARCHAR}, 
+      #{teamid,jdbcType=INTEGER},#{matchid,jdbcType=INTEGER},#{matchname,jdbcType=VARCHAR},#{joinwhichjointeam,jdbcType=INTEGER},#{score1,jdbcType=VARCHAR},#{score2,jdbcType=VARCHAR},#{score3,jdbcType=VARCHAR},{teamname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.JoinMatchTeamPeople">
+    insert into join_match_team_people
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="job != null">
+        Job,
+      </if>
+      <if test="jobname != null">
+        JobName,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="peopleid != null">
+        PeopleID,
+      </if>
+      <if test="peoplegender != null">
+        PeopleGender,
+      </if>
+      <if test="peoplesn != null">
+        PeopleSn,
+      </if>
+      <if test="joinmatchlist != null">
+        JoinMatchLIst,
+      </if>
+      <if test="joinmatchlistinname != null">
+        JoinMatchListInName,
+      </if>
+      <if test="gage != null">
+        gage,
+      </if>
+      <if test="pinlv != null">
+        Pinlv,
+      </if>
+      <if test="isteammatchlist != null">
+        isTeamMatchList,
+      </if>
+      <if test="teamid != null">
+        teamId,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="matchname != null">
+        matchname,
+      </if>
+      <if test="joinwhichjointeam != null">
+        joinwhichjointeam,
+      </if>
+      <if test="score1 != null">
+        score1,
+      </if>
+      <if test="score2 != null">
+        score2,
+      </if>
+      <if test="score3 != null">
+        score3,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null">
+        #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleid != null">
+        #{peopleid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplegender != null">
+        #{peoplegender,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplesn != null">
+        #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatchlist != null">
+        #{joinmatchlist,jdbcType=INTEGER},
+      </if>
+      <if test="joinmatchlistinname != null">
+        #{joinmatchlistinname,jdbcType=VARCHAR},
+      </if>
+      <if test="gage != null">
+        #{gage,jdbcType=INTEGER},
+      </if>
+      <if test="pinlv != null">
+        #{pinlv,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatchlist != null">
+        #{isteammatchlist,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="matchname != null">
+        #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="joinwhichjointeam != null">
+        #{joinwhichjointeam,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        #{score1,jdbcType=VARCHAR},
+      </if>
+      <if test="score2 != null">
+        #{score2,jdbcType=VARCHAR},
+      </if>
+      <if test="score3 != null">
+        #{score3,jdbcType=VARCHAR},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.JoinMatchTeamPeople">
+    update join_match_team_people
+    <set>
+      <if test="job != null">
+        Job = #{job,jdbcType=INTEGER},
+      </if>
+      <if test="jobname != null">
+        JobName = #{jobname,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleid != null">
+        PeopleID = #{peopleid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplegender != null">
+        PeopleGender = #{peoplegender,jdbcType=VARCHAR},
+      </if>
+      <if test="peoplesn != null">
+        PeopleSn = #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatchlist != null">
+        JoinMatchLIst = #{joinmatchlist,jdbcType=INTEGER},
+      </if>
+      <if test="joinmatchlistinname != null">
+        JoinMatchListInName = #{joinmatchlistinname,jdbcType=VARCHAR},
+      </if>
+      <if test="gage != null">
+        gage = #{gage,jdbcType=INTEGER},
+      </if>
+      <if test="pinlv != null">
+        Pinlv = #{pinlv,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatchlist != null">
+        isTeamMatchList = #{isteammatchlist,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        teamId = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="matchname != null">
+        matchname = #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="joinwhichjointeam != null">
+        joinwhichjointeam = #{joinwhichjointeam,jdbcType=INTEGER},
+      </if>
+      <if test="score1 != null">
+        score1 = #{score1,jdbcType=VARCHAR},
+      </if>
+      <if test="score2 != null">
+        score2 = #{score2,jdbcType=VARCHAR},
+      </if>
+      <if test="score3 != null">
+        score3 = #{score3,jdbcType=VARCHAR},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.JoinMatchTeamPeople">
+    update join_match_team_people
+    set Job = #{job,jdbcType=INTEGER},
+      JobName = #{jobname,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      PeopleID = #{peopleid,jdbcType=INTEGER},
+      PeopleGender = #{peoplegender,jdbcType=VARCHAR},
+      PeopleSn = #{peoplesn,jdbcType=VARCHAR},
+      JoinMatchLIst = #{joinmatchlist,jdbcType=INTEGER},
+      JoinMatchListInName = #{joinmatchlistinname,jdbcType=VARCHAR},
+      gage = #{gage,jdbcType=INTEGER},
+      Pinlv = #{pinlv,jdbcType=VARCHAR},
+      isTeamMatchList = #{isteammatchlist,jdbcType=VARCHAR},
+      teamId = #{teamid,jdbcType=INTEGER},
+      matchid = #{matchid,jdbcType=INTEGER},
+      matchname = #{matchname,jdbcType=VARCHAR},
+      joinwhichjointeam = #{joinwhichjointeam,jdbcType=INTEGER},
+      score1 = #{score1,jdbcType=VARCHAR},
+      score2 = #{score2,jdbcType=VARCHAR},
+      score3 = #{score3,jdbcType=VARCHAR},
+      teamname = #{teamname,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

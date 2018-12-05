@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.IsNoMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.IsNo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="isNo" jdbcType="VARCHAR" property="isno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, isNo
+  </sql>
+  <select id="findAll" resultType="com.mengmaclub.model.IsNo">
+  select * from isno
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from isno
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from isno
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.IsNo">
+    insert into isno (id, isNo)
+    values (#{id,jdbcType=INTEGER}, #{isno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.IsNo">
+    insert into isno
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="isno != null">
+        isNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="isno != null">
+        #{isno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.IsNo">
+    update isno
+    <set>
+      <if test="isno != null">
+        isNo = #{isno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.IsNo">
+    update isno
+    set isNo = #{isno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.HxTeamMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.HxTeam">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="FullName" jdbcType="VARCHAR" property="fullname" />
+    <result column="SN" jdbcType="VARCHAR" property="sn" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="HomePage" jdbcType="VARCHAR" property="homepage" />
+    <result column="EligibleDat" jdbcType="DATE" property="eligibledat" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="OrgType" jdbcType="VARCHAR" property="orgtype" />
+    <result column="ManagerName" jdbcType="VARCHAR" property="managername" />
+    <result column="ManagerMoblie" jdbcType="INTEGER" property="managermoblie" />
+    <result column="City" jdbcType="VARCHAR" property="city" />
+    <result column="TrainingCenter" jdbcType="VARCHAR" property="trainingcenter" />
+    <result column="FlyingCamp" jdbcType="VARCHAR" property="flyingcamp" />
+    <result column="Prop1" jdbcType="VARCHAR" property="prop1" />
+    <result column="Prop2" jdbcType="VARCHAR" property="prop2" />
+    <result column="AddUser" jdbcType="VARCHAR" property="adduser" />
+    <result column="AddTime" jdbcType="DATE" property="addtime" />
+    <result column="Email" jdbcType="VARCHAR" property="email" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mengmaclub.model.HxTeam">
+    <result column="Introduce" jdbcType="LONGVARCHAR" property="introduce" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, FullName, SN, Password, HomePage, EligibleDat, Address, OrgType, ManagerName, 
+    ManagerMoblie, City, TrainingCenter, FlyingCamp, Prop1, Prop2, AddUser, AddTime, 
+    Email, Phone,Status
+  </sql>
+  <sql id="Blob_Column_List">
+    Introduce
+  </sql>
+  
+  
+  <select id="findPeopleThisTeamWhoPay" resultType="com.mengmaclub.model.HxPeople" parameterType="java.lang.Integer">
+  
+  select * from hx_people where BelongTeam=#{id,jdbcType=INTEGER} and (EligibleDat is not null and (YEAR(EligibleDat) &gt;= YEAR(now())))
+  
+  </select>
+  <select id="findPeopleThisTeamWhoNotPay" resultType="com.mengmaclub.model.HxPeople" parameterType="java.lang.Integer">
+  select * from hx_people where BelongTeam= #{id,jdbcType=INTEGER} and (YearFeeStatus is null OR YearFeeStatus!=2)
+  </select>
+  <select id="findPeopleThisTeam" resultType="com.mengmaclub.model.HxPeople" parameterType="java.lang.Integer">
+  select * from hx_people where BelongTeam= #{id,jdbcType=INTEGER}
+  
+  </select>
+  <select id="findFlyTeam" resultType="com.mengmaclub.model.HxTeam">
+  SELECT * from hx_team where FlyingCamp is not NULL
+  </select>
+  <select id="findTrainTeam" resultType="com.mengmaclub.model.HxTeam">
+  SELECT * from hx_team where TrainingCenter is not NULL
+  
+  </select>
+  <select id="findWhofeed" resultType="com.mengmaclub.model.HxTeam">
+  select * from hx_team where EligibleDat is not null and YEAR(EligibleDat)  &gt;= YEAR(now())
+  
+  </select>
+  <select id="findNotPay" resultType="com.mengmaclub.model.HxTeam">
+  
+  SELECT * from hx_team where hx_team.`Status`  is null OR `Status` !=2;
+  </select>
+  <select id="showNum" resultType="java.lang.Integer">
+  SELECT COUNT(ID) FROM hx_team
+  
+  
+  </select>
+  <select id="findAll" resultType="com.mengmaclub.model.HxTeam">
+  select * from hx_team  
+    </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from hx_team
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hx_team
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.HxTeam">
+    insert into hx_team (ID, FullName, SN, 
+      Password, HomePage, EligibleDat, 
+      Address, OrgType, ManagerName, 
+      ManagerMoblie, City, TrainingCenter, 
+      FlyingCamp, Prop1, Prop2, 
+      AddUser, AddTime, Email, 
+      Phone, Status,Introduce)
+    values (#{id,jdbcType=INTEGER}, #{fullname,jdbcType=VARCHAR}, #{sn,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{homepage,jdbcType=VARCHAR}, #{eligibledat,jdbcType=DATE}, 
+      #{address,jdbcType=VARCHAR}, #{orgtype,jdbcType=VARCHAR}, #{managername,jdbcType=VARCHAR}, 
+      #{managermoblie,jdbcType=INTEGER}, #{city,jdbcType=VARCHAR}, #{trainingcenter,jdbcType=VARCHAR}, 
+      #{flyingcamp,jdbcType=VARCHAR}, #{prop1,jdbcType=VARCHAR}, #{prop2,jdbcType=VARCHAR}, 
+      #{adduser,jdbcType=VARCHAR}, #{addtime,jdbcType=DATE}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.HxTeam">
+    insert into hx_team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="fullname != null">
+        FullName,
+      </if>
+      <if test="sn != null">
+        SN,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="homepage != null">
+        HomePage,
+      </if>
+      <if test="eligibledat != null">
+        EligibleDat,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+      <if test="orgtype != null">
+        OrgType,
+      </if>
+      <if test="managername != null">
+        ManagerName,
+      </if>
+      <if test="managermoblie != null">
+        ManagerMoblie,
+      </if>
+      <if test="city != null">
+        City,
+      </if>
+      <if test="trainingcenter != null">
+        TrainingCenter,
+      </if>
+      <if test="flyingcamp != null">
+        FlyingCamp,
+      </if>
+      <if test="prop1 != null">
+        Prop1,
+      </if>
+      <if test="prop2 != null">
+        Prop2,
+      </if>
+      <if test="adduser != null">
+        AddUser,
+      </if>
+      <if test="addtime != null">
+        AddTime,
+      </if>
+      <if test="email != null">
+        Email,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="status != null">
+        Status,
+      </if>
+      <if test="introduce != null">
+        Introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="eligibledat != null">
+        #{eligibledat,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="orgtype != null">
+        #{orgtype,jdbcType=VARCHAR},
+      </if>
+      <if test="managername != null">
+        #{managername,jdbcType=VARCHAR},
+      </if>
+      <if test="managermoblie != null">
+        #{managermoblie,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingcenter != null">
+        #{trainingcenter,jdbcType=VARCHAR},
+      </if>
+      <if test="flyingcamp != null">
+        #{flyingcamp,jdbcType=VARCHAR},
+      </if>
+      <if test="prop1 != null">
+        #{prop1,jdbcType=VARCHAR},
+      </if>
+      <if test="prop2 != null">
+        #{prop2,jdbcType=VARCHAR},
+      </if>
+      <if test="adduser != null">
+        #{adduser,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.HxTeam">
+    update hx_team
+    <set>
+      <if test="fullname != null">
+        FullName = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="sn != null">
+        SN = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="homepage != null">
+        HomePage = #{homepage,jdbcType=VARCHAR},
+      </if>
+      <if test="eligibledat != null">
+        EligibleDat = #{eligibledat,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="orgtype != null">
+        OrgType = #{orgtype,jdbcType=VARCHAR},
+      </if>
+      <if test="managername != null">
+        ManagerName = #{managername,jdbcType=VARCHAR},
+      </if>
+      <if test="managermoblie != null">
+        ManagerMoblie = #{managermoblie,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        City = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingcenter != null">
+        TrainingCenter = #{trainingcenter,jdbcType=VARCHAR},
+      </if>
+      <if test="flyingcamp != null">
+        FlyingCamp = #{flyingcamp,jdbcType=VARCHAR},
+      </if>
+      <if test="prop1 != null">
+        Prop1 = #{prop1,jdbcType=VARCHAR},
+      </if>
+      <if test="prop2 != null">
+        Prop2 = #{prop2,jdbcType=VARCHAR},
+      </if>
+      <if test="adduser != null">
+        AddUser = #{adduser,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        AddTime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        Status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        Introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mengmaclub.model.HxTeam">
+    update hx_team
+    set FullName = #{fullname,jdbcType=VARCHAR},
+      SN = #{sn,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      HomePage = #{homepage,jdbcType=VARCHAR},
+      EligibleDat = #{eligibledat,jdbcType=DATE},
+      Address = #{address,jdbcType=VARCHAR},
+      OrgType = #{orgtype,jdbcType=VARCHAR},
+      ManagerName = #{managername,jdbcType=VARCHAR},
+      ManagerMoblie = #{managermoblie,jdbcType=INTEGER},
+      City = #{city,jdbcType=VARCHAR},
+      TrainingCenter = #{trainingcenter,jdbcType=VARCHAR},
+      FlyingCamp = #{flyingcamp,jdbcType=VARCHAR},
+      Prop1 = #{prop1,jdbcType=VARCHAR},
+      Prop2 = #{prop2,jdbcType=VARCHAR},
+      AddUser = #{adduser,jdbcType=VARCHAR},
+      AddTime = #{addtime,jdbcType=DATE},
+      Email = #{email,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=VARCHAR},
+      Introduce = #{introduce,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.HxTeam">
+    update hx_team
+    set FullName = #{fullname,jdbcType=VARCHAR},
+      SN = #{sn,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      HomePage = #{homepage,jdbcType=VARCHAR},
+      EligibleDat = #{eligibledat,jdbcType=DATE},
+      Address = #{address,jdbcType=VARCHAR},
+      OrgType = #{orgtype,jdbcType=VARCHAR},
+      ManagerName = #{managername,jdbcType=VARCHAR},
+      ManagerMoblie = #{managermoblie,jdbcType=INTEGER},
+      City = #{city,jdbcType=VARCHAR},
+      TrainingCenter = #{trainingcenter,jdbcType=VARCHAR},
+      FlyingCamp = #{flyingcamp,jdbcType=VARCHAR},
+      Prop1 = #{prop1,jdbcType=VARCHAR},
+      Prop2 = #{prop2,jdbcType=VARCHAR},
+      AddUser = #{adduser,jdbcType=VARCHAR},
+      AddTime = #{addtime,jdbcType=DATE},
+      Email = #{email,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

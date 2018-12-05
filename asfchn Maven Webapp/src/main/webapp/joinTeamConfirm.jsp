@@ -1,0 +1,87 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	pageContext.setAttribute("path", request.getContextPath());
+%>
+
+<!DOCTYPE HTML >
+<html>
+  <head>
+    
+   <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<link href="css/animate.min.css" rel="stylesheet">
+<link href="css/style.min_EDT.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/master.css">
+<link rel="stylesheet" type="text/css"
+	href="css/plugins/iCheck/custom.css">
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
+  </head>
+  
+  <body>
+  <div align="center">
+  <h3>所有待审核的参赛队伍</h3>
+   <div class="table-responsive">
+							<table class="table table-striped table-hover" id="ListTB">
+								<thead>
+									<tr>
+
+										<th>队伍名字</th>
+										<th>会员单位</th>
+										<th>添加时间</th>
+										<th>参加比赛名称</th>
+										<th>报名单状态</th>
+										<th>详情</th> 
+										<th>操作</th>
+										
+										
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${joinMatchTeams}" var="JoinMatchTeam">
+										<tr>
+											<td>${JoinMatchTeam.teamname }</td>
+											<td>${JoinMatchTeam.blongteamname }</td>
+											 <td><fmt:formatDate value="${JoinMatchTeam.addtime }" pattern="yyyy-MM-dd HH:mm:ss" />										
+											</td>
+											<td>${JoinMatchTeam.matchname }</td>
+											<td>
+											<c:choose>
+											<c:when test="${JoinMatchTeam.isconfirm eq 1}"><span style="color:red">待审核</span></c:when>
+											<c:when test="${JoinMatchTeam.isconfirm eq 7 }"><span style="color:red">再次编辑后待审核</span></c:when>
+											</c:choose>
+											
+											
+											</td>
+											<td><a href="getJoinTeamInfo?id=${ JoinMatchTeam.id}">详情</a></td>
+											<td><a href="toYesJoinTeam?id=${JoinMatchTeam.id }">同意</a><a href="toNoJoinTeam?id=${ JoinMatchTeam.id}">拒绝</a></td>
+											
+											
+											
+											<!--  <td><a href="${path}/showTeamIntroduce?id=${hxTeam.id}">详情</a></td>-->
+											
+										</tr>
+
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+						</div>
+  </body>
+</html>

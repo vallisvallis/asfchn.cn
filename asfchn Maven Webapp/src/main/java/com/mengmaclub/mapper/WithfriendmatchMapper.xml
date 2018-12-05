@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.WithfriendmatchMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Withfriendmatch">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="joinpeopleid" jdbcType="INTEGER" property="joinpeopleid" />
+    <result column="turn" jdbcType="INTEGER" property="turn" />
+    <result column="rank" jdbcType="INTEGER" property="rank" />
+    <result column="scoreone" jdbcType="VARCHAR" property="scoreone" />
+    <result column="scoretwo" jdbcType="VARCHAR" property="scoretwo" />
+    <result column="finalscore" jdbcType="VARCHAR" property="finalscore" />
+    <result column="oneroundrid" jdbcType="INTEGER" property="oneroundrid" />
+    <result column="tworoundrid" jdbcType="INTEGER" property="tworoundrid" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="reward" jdbcType="VARCHAR" property="reward" />
+    <result column="isteammatch" jdbcType="INTEGER" property="isteammatch" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="joinmatch" jdbcType="INTEGER" property="joinmatch" />
+    <result column="joinlist" jdbcType="INTEGER" property="joinlist" />
+    <result column="joingagae" jdbcType="INTEGER" property="joingagae" />
+    <result column="myteamfriend" jdbcType="VARCHAR" property="myteamfriend" />
+    <result column="isconfirm" jdbcType="INTEGER" property="isconfirm" />
+    <result column="tworoundisconfirm" jdbcType="INTEGER" property="tworoundisconfirm" />
+    <result column="oneroundisconfirm" jdbcType="INTEGER" property="oneroundisconfirm" />
+    <result column="scoreonebytranslate" jdbcType="DOUBLE" property="scoreonebytranslate" />
+    <result column="scoretwobytranslate" jdbcType="DOUBLE" property="scoretwobytranslate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn, name, joinpeopleid, turn, rank, scoreone, scoretwo, finalscore, oneroundrid, 
+    tworoundrid, teamname, reward, isteammatch, num, joinmatch, joinlist, joingagae, 
+    myteamfriend, isconfirm, tworoundisconfirm, oneroundisconfirm, scoreonebytranslate, 
+    scoretwobytranslate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from withfriendmatch
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findWhereIsMyListGagePeople" parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Withfriendmatch">
+
+  select * from withfriendmatch where   joingagae=#{arg0} and joinlist=#{arg1}
+  
+
+
+</select>
+ <select id="findWhoJoinThisMatchThisListAndHasConfirm"  parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Withfriendmatch">
+  
+  SELECT
+	*
+FROM
+withfriendmatch	
+WHERE
+
+
+joinmatch=#{arg0}
+and joinlist=#{arg1}
+and joingagae=#{arg2}
+
+  
+  </select>
+<select id="findMyfriend" parameterType="java.lang.String"  resultType="com.mengmaclub.model.Withfriendmatch">
+select * from withfriendmatch where myteamfriend=#{myteamfriend,jdbcType=VARCHAR}
+
+</select>
+  <select id="findByJpId" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Withfriendmatch">
+  select * from withfriendmatch where joinpeopleid= #{joinpeopleid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from withfriendmatch
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Withfriendmatch">
+    insert into withfriendmatch (id, sn, name, 
+      joinpeopleid, turn, rank, 
+      scoreone, scoretwo, finalscore, 
+      oneroundrid, tworoundrid, teamname, 
+      reward, isteammatch, num, 
+      joinmatch, joinlist, joingagae, 
+      myteamfriend, isconfirm, tworoundisconfirm, 
+      oneroundisconfirm, scoreonebytranslate, 
+      scoretwobytranslate)
+    values (#{id,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{joinpeopleid,jdbcType=INTEGER}, #{turn,jdbcType=INTEGER}, #{rank,jdbcType=INTEGER}, 
+      #{scoreone,jdbcType=VARCHAR}, #{scoretwo,jdbcType=VARCHAR}, #{finalscore,jdbcType=VARCHAR}, 
+      #{oneroundrid,jdbcType=INTEGER}, #{tworoundrid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, 
+      #{reward,jdbcType=VARCHAR}, #{isteammatch,jdbcType=INTEGER}, #{num,jdbcType=VARCHAR}, 
+      #{joinmatch,jdbcType=INTEGER}, #{joinlist,jdbcType=INTEGER}, #{joingagae,jdbcType=INTEGER}, 
+      #{myteamfriend,jdbcType=VARCHAR}, #{isconfirm,jdbcType=INTEGER}, #{tworoundisconfirm,jdbcType=INTEGER}, 
+      #{oneroundisconfirm,jdbcType=INTEGER}, #{scoreonebytranslate,jdbcType=DOUBLE}, 
+      #{scoretwobytranslate,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Withfriendmatch">
+    insert into withfriendmatch
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid,
+      </if>
+      <if test="turn != null">
+        turn,
+      </if>
+      <if test="rank != null">
+        rank,
+      </if>
+      <if test="scoreone != null">
+        scoreone,
+      </if>
+      <if test="scoretwo != null">
+        scoretwo,
+      </if>
+      <if test="finalscore != null">
+        finalscore,
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid,
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+      <if test="reward != null">
+        reward,
+      </if>
+      <if test="isteammatch != null">
+        isteammatch,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="joinmatch != null">
+        joinmatch,
+      </if>
+      <if test="joinlist != null">
+        joinlist,
+      </if>
+      <if test="joingagae != null">
+        joingagae,
+      </if>
+      <if test="myteamfriend != null">
+        myteamfriend,
+      </if>
+      <if test="isconfirm != null">
+        isconfirm,
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm,
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm,
+      </if>
+      <if test="scoreonebytranslate != null">
+        scoreonebytranslate,
+      </if>
+      <if test="scoretwobytranslate != null">
+        scoretwobytranslate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="scoreone != null">
+        #{scoreone,jdbcType=VARCHAR},
+      </if>
+      <if test="scoretwo != null">
+        #{scoretwo,jdbcType=VARCHAR},
+      </if>
+      <if test="finalscore != null">
+        #{finalscore,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingagae != null">
+        #{joingagae,jdbcType=INTEGER},
+      </if>
+      <if test="myteamfriend != null">
+        #{myteamfriend,jdbcType=VARCHAR},
+      </if>
+      <if test="isconfirm != null">
+        #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="scoreonebytranslate != null">
+        #{scoreonebytranslate,jdbcType=DOUBLE},
+      </if>
+      <if test="scoretwobytranslate != null">
+        #{scoretwobytranslate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Withfriendmatch">
+    update withfriendmatch
+    <set>
+      <if test="sn != null">
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn != null">
+        turn = #{turn,jdbcType=INTEGER},
+      </if>
+      <if test="rank != null">
+        rank = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="scoreone != null">
+        scoreone = #{scoreone,jdbcType=VARCHAR},
+      </if>
+      <if test="scoretwo != null">
+        scoretwo = #{scoretwo,jdbcType=VARCHAR},
+      </if>
+      <if test="finalscore != null">
+        finalscore = #{finalscore,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        reward = #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        isteammatch = #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        joinmatch = #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        joinlist = #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingagae != null">
+        joingagae = #{joingagae,jdbcType=INTEGER},
+      </if>
+      <if test="myteamfriend != null">
+        myteamfriend = #{myteamfriend,jdbcType=VARCHAR},
+      </if>
+      <if test="isconfirm != null">
+        isconfirm = #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="scoreonebytranslate != null">
+        scoreonebytranslate = #{scoreonebytranslate,jdbcType=DOUBLE},
+      </if>
+      <if test="scoretwobytranslate != null">
+        scoretwobytranslate = #{scoretwobytranslate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Withfriendmatch">
+    update withfriendmatch
+    set sn = #{sn,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      turn = #{turn,jdbcType=INTEGER},
+      rank = #{rank,jdbcType=INTEGER},
+      scoreone = #{scoreone,jdbcType=VARCHAR},
+      scoretwo = #{scoretwo,jdbcType=VARCHAR},
+      finalscore = #{finalscore,jdbcType=VARCHAR},
+      oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      reward = #{reward,jdbcType=VARCHAR},
+      isteammatch = #{isteammatch,jdbcType=INTEGER},
+      num = #{num,jdbcType=VARCHAR},
+      joinmatch = #{joinmatch,jdbcType=INTEGER},
+      joinlist = #{joinlist,jdbcType=INTEGER},
+      joingagae = #{joingagae,jdbcType=INTEGER},
+      myteamfriend = #{myteamfriend,jdbcType=VARCHAR},
+      isconfirm = #{isconfirm,jdbcType=INTEGER},
+      tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER},
+      oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      scoreonebytranslate = #{scoreonebytranslate,jdbcType=DOUBLE},
+      scoretwobytranslate = #{scoretwobytranslate,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.TurnmatchlistMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Turnmatchlist">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="joinpeopleid" jdbcType="INTEGER" property="joinpeopleid" />
+    <result column="turn1" jdbcType="INTEGER" property="turn1" />
+    <result column="turn2" jdbcType="INTEGER" property="turn2" />
+    <result column="rank1" jdbcType="INTEGER" property="rank1" />
+    <result column="rank2" jdbcType="INTEGER" property="rank2" />
+    <result column="rankfinal" jdbcType="INTEGER" property="rankfinal" />
+    <result column="oneturnpowertime" jdbcType="VARCHAR" property="oneturnpowertime" />
+    <result column="oneturnpointmeter" jdbcType="VARCHAR" property="oneturnpointmeter" />
+    <result column="oneturnskytime" jdbcType="VARCHAR" property="oneturnskytime" />
+    <result column="oneturnscore" jdbcType="VARCHAR" property="oneturnscore" />
+    <result column="scoreinoneturnhascalc" jdbcType="DOUBLE" property="scoreinoneturnhascalc" />
+    <result column="twoturnpowertime" jdbcType="VARCHAR" property="twoturnpowertime" />
+    <result column="twoturnpointmeter" jdbcType="VARCHAR" property="twoturnpointmeter" />
+    <result column="twoturnskytime" jdbcType="VARCHAR" property="twoturnskytime" />
+    <result column="twoturnscore" jdbcType="VARCHAR" property="twoturnscore" />
+    <result column="scoreintwoturnhascalc" jdbcType="DOUBLE" property="scoreintwoturnhascalc" />
+    <result column="finalscore" jdbcType="VARCHAR" property="finalscore" />
+    <result column="oneroundrid" jdbcType="INTEGER" property="oneroundrid" />
+    <result column="tworoundrid" jdbcType="INTEGER" property="tworoundrid" />
+    <result column="teamname" jdbcType="VARCHAR" property="teamname" />
+    <result column="reward" jdbcType="VARCHAR" property="reward" />
+    <result column="isteammatch" jdbcType="INTEGER" property="isteammatch" />
+    <result column="num" jdbcType="VARCHAR" property="num" />
+    <result column="joinmatch" jdbcType="INTEGER" property="joinmatch" />
+    <result column="joinlist" jdbcType="INTEGER" property="joinlist" />
+    <result column="joingage" jdbcType="INTEGER" property="joingage" />
+    <result column="oneroundisconfirm" jdbcType="INTEGER" property="oneroundisconfirm" />
+    <result column="tworoundisconfirm" jdbcType="INTEGER" property="tworoundisconfirm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, sn, name, joinpeopleid, turn1, turn2, rank1, rank2, rankfinal, oneturnpowertime, 
+    oneturnpointmeter, oneturnskytime, oneturnscore, scoreinoneturnhascalc, twoturnpowertime, 
+    twoturnpointmeter, twoturnskytime, twoturnscore, scoreintwoturnhascalc, finalscore, 
+    oneroundrid, tworoundrid, teamname, reward, isteammatch, num,joinmatch, joinlist, joingage, 
+    oneroundisconfirm, tworoundisconfirm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from turnmatchlist
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findMySameturn" parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where joingage=#{arg0} and joinlist=#{arg1} and  turn=#{arg2}
+  
+  </select>
+    <select id="findBySnJid" resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where sn=#{arg0} and joinpeopleid=#{arg1}
+  
+  </select>
+  <select id="findMySameturnin2" parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where joingage=#{arg0} and joinlist=#{arg1} and  turn2=#{arg2}
+  
+  </select>
+  <select id="findWhoJoinThisMatchThisListAndHasConfirm"  parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Turnmatchlist">
+   SELECT
+	*
+FROM
+turnmatchlist	
+WHERE
+
+
+joinmatch=#{arg0}
+and joinlist=#{arg1}
+and joingage=#{arg2}
+  
+  
+  </select>
+  <select id="findWhereIsMyListGagePeople"  parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where joinlist=#{arg0} and joingage=#{arg1}
+  
+  </select>
+  <select id="all" parameterType="java.lang.Integer"  resultType="com.mengmaclub.model.Turnmatchlist"> 
+    select * from turnmatchlist where joinlist=#{joinlist,jdbcType=INTEGER}
+  </select>
+  <select id="findByJpId" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where joinpeopleid= #{id,jdbcType=INTEGER}
+  
+  </select>
+  <select id="findNoOne" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where  joingage=#{arg0} and  joinlist=#{arg1} and  turn=#{arg2} and rank=1
+  
+  
+  </select>
+  <select id="findNoOnein2" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.Turnmatchlist">
+  select * from turnmatchlist where  joingage=#{arg0} and  joinlist=#{arg1} and  turn2=#{arg2} and rank2=1
+  
+  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from turnmatchlist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Turnmatchlist">
+    insert into turnmatchlist (id, sn, name, 
+      joinpeopleid, turn1, turn2, 
+      rank1, rank2, rankfinal, 
+      oneturnpowertime, oneturnpointmeter, oneturnskytime, 
+      oneturnscore, scoreinoneturnhascalc, twoturnpowertime, 
+      twoturnpointmeter, twoturnskytime, twoturnscore, 
+      scoreintwoturnhascalc, finalscore, oneroundrid, 
+      tworoundrid, teamname, reward, 
+      isteammatch, num, joinmatch,joinlist, 
+      joingage, oneroundisconfirm, tworoundisconfirm
+      )
+    values (#{id,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{joinpeopleid,jdbcType=INTEGER}, #{turn1,jdbcType=INTEGER}, #{turn2,jdbcType=INTEGER}, 
+      #{rank1,jdbcType=INTEGER}, #{rank2,jdbcType=INTEGER}, #{rankfinal,jdbcType=INTEGER}, 
+      #{oneturnpowertime,jdbcType=VARCHAR}, #{oneturnpointmeter,jdbcType=VARCHAR}, #{oneturnskytime,jdbcType=VARCHAR}, 
+      #{oneturnscore,jdbcType=VARCHAR}, #{scoreinoneturnhascalc,jdbcType=DOUBLE}, #{twoturnpowertime,jdbcType=VARCHAR}, 
+      #{twoturnpointmeter,jdbcType=VARCHAR}, #{twoturnskytime,jdbcType=VARCHAR}, #{twoturnscore,jdbcType=VARCHAR}, 
+      #{scoreintwoturnhascalc,jdbcType=DOUBLE}, #{finalscore,jdbcType=VARCHAR}, #{oneroundrid,jdbcType=INTEGER}, 
+      #{tworoundrid,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{reward,jdbcType=VARCHAR}, 
+      #{isteammatch,jdbcType=INTEGER}, #{num,jdbcType=VARCHAR}, #{joinmatch,jdbcType=INTEGER}, #{joinlist,jdbcType=INTEGER}, 
+      #{joingage,jdbcType=INTEGER}, #{oneroundisconfirm,jdbcType=INTEGER}, #{tworoundisconfirm,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Turnmatchlist">
+    insert into turnmatchlist
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid,
+      </if>
+      <if test="turn1 != null">
+        turn1,
+      </if>
+      <if test="turn2 != null">
+        turn2,
+      </if>
+      <if test="rank1 != null">
+        rank1,
+      </if>
+      <if test="rank2 != null">
+        rank2,
+      </if>
+      <if test="rankfinal != null">
+        rankfinal,
+      </if>
+      <if test="oneturnpowertime != null">
+        oneturnpowertime,
+      </if>
+      <if test="oneturnpointmeter != null">
+        oneturnpointmeter,
+      </if>
+      <if test="oneturnskytime != null">
+        oneturnskytime,
+      </if>
+      <if test="oneturnscore != null">
+        oneturnscore,
+      </if>
+      <if test="scoreinoneturnhascalc != null">
+        scoreinoneturnhascalc,
+      </if>
+      <if test="twoturnpowertime != null">
+        twoturnpowertime,
+      </if>
+      <if test="twoturnpointmeter != null">
+        twoturnpointmeter,
+      </if>
+      <if test="twoturnskytime != null">
+        twoturnskytime,
+      </if>
+      <if test="twoturnscore != null">
+        twoturnscore,
+      </if>
+      <if test="scoreintwoturnhascalc != null">
+        scoreintwoturnhascalc,
+      </if>
+      <if test="finalscore != null">
+        finalscore,
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid,
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid,
+      </if>
+      <if test="teamname != null">
+        teamname,
+      </if>
+      <if test="reward != null">
+        reward,
+      </if>
+      <if test="isteammatch != null">
+        isteammatch,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+        <if test="joinmatch != null">
+        joinmatch,
+      </if>
+      <if test="joinlist != null">
+        joinlist,
+      </if>
+      <if test="joingage != null">
+        joingage,
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm,
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn1 != null">
+        #{turn1,jdbcType=INTEGER},
+      </if>
+      <if test="turn2 != null">
+        #{turn2,jdbcType=INTEGER},
+      </if>
+      <if test="rank1 != null">
+        #{rank1,jdbcType=INTEGER},
+      </if>
+      <if test="rank2 != null">
+        #{rank2,jdbcType=INTEGER},
+      </if>
+      <if test="rankfinal != null">
+        #{rankfinal,jdbcType=INTEGER},
+      </if>
+      <if test="oneturnpowertime != null">
+        #{oneturnpowertime,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnpointmeter != null">
+        #{oneturnpointmeter,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnskytime != null">
+        #{oneturnskytime,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnscore != null">
+        #{oneturnscore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreinoneturnhascalc != null">
+        #{scoreinoneturnhascalc,jdbcType=DOUBLE},
+      </if>
+      <if test="twoturnpowertime != null">
+        #{twoturnpowertime,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnpointmeter != null">
+        #{twoturnpointmeter,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnskytime != null">
+        #{twoturnskytime,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnscore != null">
+        #{twoturnscore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreintwoturnhascalc != null">
+        #{scoreintwoturnhascalc,jdbcType=DOUBLE},
+      </if>
+      <if test="finalscore != null">
+        #{finalscore,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingage != null">
+        #{joingage,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Turnmatchlist">
+    update turnmatchlist
+    <set>
+      <if test="sn != null">
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="joinpeopleid != null">
+        joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      </if>
+      <if test="turn1 != null">
+        turn1 = #{turn1,jdbcType=INTEGER},
+      </if>
+      <if test="turn2 != null">
+        turn2 = #{turn2,jdbcType=INTEGER},
+      </if>
+      <if test="rank1 != null">
+        rank1 = #{rank1,jdbcType=INTEGER},
+      </if>
+      <if test="rank2 != null">
+        rank2 = #{rank2,jdbcType=INTEGER},
+      </if>
+      <if test="rankfinal != null">
+        rankfinal = #{rankfinal,jdbcType=INTEGER},
+      </if>
+      <if test="oneturnpowertime != null">
+        oneturnpowertime = #{oneturnpowertime,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnpointmeter != null">
+        oneturnpointmeter = #{oneturnpointmeter,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnskytime != null">
+        oneturnskytime = #{oneturnskytime,jdbcType=VARCHAR},
+      </if>
+      <if test="oneturnscore != null">
+        oneturnscore = #{oneturnscore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreinoneturnhascalc != null">
+        scoreinoneturnhascalc = #{scoreinoneturnhascalc,jdbcType=DOUBLE},
+      </if>
+      <if test="twoturnpowertime != null">
+        twoturnpowertime = #{twoturnpowertime,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnpointmeter != null">
+        twoturnpointmeter = #{twoturnpointmeter,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnskytime != null">
+        twoturnskytime = #{twoturnskytime,jdbcType=VARCHAR},
+      </if>
+      <if test="twoturnscore != null">
+        twoturnscore = #{twoturnscore,jdbcType=VARCHAR},
+      </if>
+      <if test="scoreintwoturnhascalc != null">
+        scoreintwoturnhascalc = #{scoreintwoturnhascalc,jdbcType=DOUBLE},
+      </if>
+      <if test="finalscore != null">
+        finalscore = #{finalscore,jdbcType=VARCHAR},
+      </if>
+      <if test="oneroundrid != null">
+        oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundrid != null">
+        tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        teamname = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="reward != null">
+        reward = #{reward,jdbcType=VARCHAR},
+      </if>
+      <if test="isteammatch != null">
+        isteammatch = #{isteammatch,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="joinmatch != null">
+        joinmatch = #{joinmatch,jdbcType=INTEGER},
+      </if>
+      <if test="joinlist != null">
+        joinlist = #{joinlist,jdbcType=INTEGER},
+      </if>
+      <if test="joingage != null">
+        joingage = #{joingage,jdbcType=INTEGER},
+      </if>
+      <if test="oneroundisconfirm != null">
+        oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="tworoundisconfirm != null">
+        tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Turnmatchlist">
+    update turnmatchlist
+    set sn = #{sn,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      joinpeopleid = #{joinpeopleid,jdbcType=INTEGER},
+      turn1 = #{turn1,jdbcType=INTEGER},
+      turn2 = #{turn2,jdbcType=INTEGER},
+      rank1 = #{rank1,jdbcType=INTEGER},
+      rank2 = #{rank2,jdbcType=INTEGER},
+      rankfinal = #{rankfinal,jdbcType=INTEGER},
+      oneturnpowertime = #{oneturnpowertime,jdbcType=VARCHAR},
+      oneturnpointmeter = #{oneturnpointmeter,jdbcType=VARCHAR},
+      oneturnskytime = #{oneturnskytime,jdbcType=VARCHAR},
+      oneturnscore = #{oneturnscore,jdbcType=VARCHAR},
+      scoreinoneturnhascalc = #{scoreinoneturnhascalc,jdbcType=DOUBLE},
+      twoturnpowertime = #{twoturnpowertime,jdbcType=VARCHAR},
+      twoturnpointmeter = #{twoturnpointmeter,jdbcType=VARCHAR},
+      twoturnskytime = #{twoturnskytime,jdbcType=VARCHAR},
+      twoturnscore = #{twoturnscore,jdbcType=VARCHAR},
+      scoreintwoturnhascalc = #{scoreintwoturnhascalc,jdbcType=DOUBLE},
+      finalscore = #{finalscore,jdbcType=VARCHAR},
+      oneroundrid = #{oneroundrid,jdbcType=INTEGER},
+      tworoundrid = #{tworoundrid,jdbcType=INTEGER},
+      teamname = #{teamname,jdbcType=VARCHAR},
+      reward = #{reward,jdbcType=VARCHAR},
+      isteammatch = #{isteammatch,jdbcType=INTEGER},
+      num = #{num,jdbcType=VARCHAR},
+      joinmatch = #{joinmatch,jdbcType=INTEGER},
+      joinlist = #{joinlist,jdbcType=INTEGER},
+      joingage = #{joingage,jdbcType=INTEGER},
+      oneroundisconfirm = #{oneroundisconfirm,jdbcType=INTEGER},
+      tworoundisconfirm = #{tworoundisconfirm,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

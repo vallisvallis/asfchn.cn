@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.MatchMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.Match">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="StartTime" jdbcType="DATE" property="starttime" />
+    <result column="EndTime" jdbcType="DATE" property="endtime" />
+    <result column="AddTime" jdbcType="DATE" property="addtime" />
+    <result column="EditTime" jdbcType="DATE" property="edittime" />
+    <result column="Referee" jdbcType="INTEGER" property="referee" />
+    <result column="PushTime" jdbcType="DATE" property="pushtime" />
+    <result column="Address" jdbcType="VARCHAR" property="address" />
+    <result column="SupportList" jdbcType="VARCHAR" property="supportlist" />
+    <result column="SupportGroup" jdbcType="VARCHAR" property="supportgroup" />
+    <result column="SupportJob" jdbcType="VARCHAR" property="supportjob" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mengmaclub.model.Match">
+    <result column="Introduce" jdbcType="LONGVARCHAR" property="introduce" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Name, StartTime, EndTime, AddTime, EditTime, Referee, PushTime, Address, SupportList, 
+    SupportGroup, SupportJob
+  </sql>
+  <sql id="Blob_Column_List">
+    Introduce
+  </sql>
+  <select id="findAll" resultType="com.mengmaclub.model.Match">
+  select  * from `match`
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from `match`
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from `match`
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.Match">
+    insert into `match` (ID, Name, StartTime, 
+      EndTime, AddTime, EditTime, 
+      Referee, PushTime, Address, SupportList, SupportGroup, SupportJob,
+      Introduce)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, 
+      #{endtime,jdbcType=DATE}, #{addtime,jdbcType=DATE}, #{edittime,jdbcType=DATE}, 
+      #{referee,jdbcType=INTEGER}, #{pushtime,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, 
+       #{supportlist,jdbcType=VARCHAR}, #{supportgroup,jdbcType=VARCHAR}, #{supportjob,jdbcType=VARCHAR},
+      #{introduce,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.Match">
+    insert into `match`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        Name,
+      </if>
+      <if test="starttime != null">
+        StartTime,
+      </if>
+      <if test="endtime != null">
+        EndTime,
+      </if>
+      <if test="addtime != null">
+        AddTime,
+      </if>
+      <if test="edittime != null">
+        EditTime,
+      </if>
+      <if test="referee != null">
+        Referee,
+      </if>
+      <if test="pushtime != null">
+        PushTime,
+      </if>
+      <if test="address != null">
+        Address,
+      </if>
+       <if test="supportlist != null">
+        SupportList,
+      </if>
+      <if test="supportgroup != null">
+        SupportGroup,
+      </if>
+      <if test="supportjob != null">
+        SupportJob,
+      </if>
+      <if test="introduce != null">
+        Introduce,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="edittime != null">
+        #{edittime,jdbcType=DATE},
+      </if>
+      <if test="referee != null">
+        #{referee,jdbcType=INTEGER},
+      </if>
+      <if test="pushtime != null">
+        #{pushtime,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supportlist != null">
+        #{supportlist,jdbcType=VARCHAR},
+      </if>
+      <if test="supportgroup != null">
+        #{supportgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="supportjob != null">
+        #{supportjob,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.Match">
+    update `match`
+    <set>
+      <if test="name != null">
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        StartTime = #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null">
+        EndTime = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="addtime != null">
+        AddTime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="edittime != null">
+        EditTime = #{edittime,jdbcType=DATE},
+      </if>
+      <if test="referee != null">
+        Referee = #{referee,jdbcType=INTEGER},
+      </if>
+      <if test="pushtime != null">
+        PushTime = #{pushtime,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="supportlist != null">
+        SupportList = #{supportlist,jdbcType=VARCHAR},
+      </if>
+      <if test="supportgroup != null">
+        SupportGroup = #{supportgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="supportjob != null">
+        SupportJob = #{supportjob,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null">
+        Introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mengmaclub.model.Match">
+    update `match`
+    set Name = #{name,jdbcType=VARCHAR},
+      StartTime = #{starttime,jdbcType=DATE},
+      EndTime = #{endtime,jdbcType=DATE},
+      AddTime = #{addtime,jdbcType=DATE},
+      EditTime = #{edittime,jdbcType=DATE},
+      Referee = #{referee,jdbcType=INTEGER},
+      PushTime = #{pushtime,jdbcType=DATE},
+      Address = #{address,jdbcType=VARCHAR},
+       SupportList = #{supportlist,jdbcType=VARCHAR},
+      SupportGroup = #{supportgroup,jdbcType=VARCHAR},
+      SupportJob = #{supportjob,jdbcType=VARCHAR},
+      Introduce = #{introduce,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.Match">
+    update `match`
+    set Name = #{name,jdbcType=VARCHAR},
+      StartTime = #{starttime,jdbcType=DATE},
+      EndTime = #{endtime,jdbcType=DATE},
+      AddTime = #{addtime,jdbcType=DATE},
+      EditTime = #{edittime,jdbcType=DATE},
+      Referee = #{referee,jdbcType=INTEGER},
+      PushTime = #{pushtime,jdbcType=DATE},
+      Address = #{address,jdbcType=VARCHAR},
+       SupportList = #{supportlist,jdbcType=VARCHAR},
+      SupportGroup = #{supportgroup,jdbcType=VARCHAR},
+      SupportJob = #{supportjob,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

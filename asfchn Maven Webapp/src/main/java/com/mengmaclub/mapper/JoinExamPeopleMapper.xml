@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.JoinExamPeopleMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.JoinExamPeople">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="teamid" jdbcType="INTEGER" property="teamid" />
+    <result column="peopleSn" jdbcType="VARCHAR" property="peoplesn" />
+    <result column="examtype" jdbcType="VARCHAR" property="examtype" />
+    <result column="examtypelevel" jdbcType="VARCHAR" property="examtypelevel" />
+    <result column="feestatus" jdbcType="INTEGER" property="feestatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, teamid, peopleSn, examtype, examtypelevel, feestatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from joinexampeople
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findById" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinExamPeople">
+  select * from joinexampeople where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findBySn" parameterType="java.lang.String" resultType="com.mengmaclub.model.JoinExamPeople">
+  select * from joinexampeople where peoplesn=#{peoplesn,jdbcType=VARCHAR} and feestatus=0
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from joinexampeople
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <select id="findWhoIsNeedConfirm" resultType="com.mengmaclub.model.JoinExamPeople">
+  select * from joinexampeople where feestatus=1
+  
+  </select>
+  <select id="findWhoHasConfirm" resultType="com.mengmaclub.model.JoinExamPeople">
+    select * from joinexampeople where feestatus=2
+  </select>
+  <insert id="insert" parameterType="com.mengmaclub.model.JoinExamPeople">
+    insert into joinexampeople (id, name, teamid, 
+      peopleSn, examtype, examtypelevel, 
+      feestatus)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{teamid,jdbcType=INTEGER}, 
+      #{peoplesn,jdbcType=VARCHAR}, #{examtype,jdbcType=VARCHAR}, #{examtypelevel,jdbcType=VARCHAR}, 
+      #{feestatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.JoinExamPeople">
+    insert into joinexampeople
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="teamid != null">
+        teamid,
+      </if>
+      <if test="peoplesn != null">
+        peopleSn,
+      </if>
+      <if test="examtype != null">
+        examtype,
+      </if>
+      <if test="examtypelevel != null">
+        examtypelevel,
+      </if>
+      <if test="feestatus != null">
+        feestatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplesn != null">
+        #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="examtype != null">
+        #{examtype,jdbcType=VARCHAR},
+      </if>
+      <if test="examtypelevel != null">
+        #{examtypelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="feestatus != null">
+        #{feestatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.JoinExamPeople">
+    update joinexampeople
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="teamid != null">
+        teamid = #{teamid,jdbcType=INTEGER},
+      </if>
+      <if test="peoplesn != null">
+        peopleSn = #{peoplesn,jdbcType=VARCHAR},
+      </if>
+      <if test="examtype != null">
+        examtype = #{examtype,jdbcType=VARCHAR},
+      </if>
+      <if test="examtypelevel != null">
+        examtypelevel = #{examtypelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="feestatus != null">
+        feestatus = #{feestatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.JoinExamPeople">
+    update joinexampeople
+    set name = #{name,jdbcType=VARCHAR},
+      teamid = #{teamid,jdbcType=INTEGER},
+      peopleSn = #{peoplesn,jdbcType=VARCHAR},
+      examtype = #{examtype,jdbcType=VARCHAR},
+      examtypelevel = #{examtypelevel,jdbcType=VARCHAR},
+      feestatus = #{feestatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

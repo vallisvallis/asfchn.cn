@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.News">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="Manager" jdbcType="VARCHAR" property="manager" />
+    <result column="AddTime" jdbcType="DATE" property="addtime" />
+    <result column="EditTime" jdbcType="DATE" property="edittime" />
+    <result column="Type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.mengmaclub.model.News">
+    <result column="Content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, Manager, AddTime, EditTime,Title,Type
+  </sql>
+  <sql id="Blob_Column_List">
+    Content
+  </sql>
+  <select id="findNews" resultType="com.mengmaclub.model.News">
+  
+  select * from news where type=1
+  </select>
+  <select id="findReport" resultType="com.mengmaclub.model.News">
+  
+  select * from news where type=2
+  </select>
+  
+  <select id="findAll" resultType="com.mengmaclub.model.News">
+  select * from news
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from news
+    where ID = #{id,jdbcType=INTEGER}
+ </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.News">
+    insert into news (ID,Title, Manager, AddTime, 
+     EditTime, Content,Type)
+    values (#{id,jdbcType=INTEGER},#{title,jdbcType=VARCHAR} #{manager,jdbcType=VARCHAR}, #{addtime,jdbcType=DATE}, 
+      #{edittime,jdbcType=DATE},#{type,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.News">
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+       <if test="title != null">
+        Title,
+      </if>
+      <if test="manager != null">
+        Manager,
+      </if>
+      <if test="addtime != null">
+        AddTime,
+      </if>
+      <if test="edittime != null">
+        EditTime,
+      </if>
+      <if test="type != null">
+        Type,
+      </if>
+      <if test=" content!= null">
+        Content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null">
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="edittime != null">
+        #{edittime,jdbcType=DATE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.News">
+    update news
+    <set>
+    <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null">
+        Manager = #{manager,jdbcType=VARCHAR},
+      </if>      
+      <if test="addtime != null">
+        AddTime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="edittime != null">
+        EditTime = #{edittime,jdbcType=DATE},
+      </if>
+       <if test="type != null">
+        Type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        Content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.mengmaclub.model.News">
+    update news
+    set 
+    Title =#{title,jdbcType=VARCHAR},
+    Manager = #{manager,jdbcType=VARCHAR},
+      AddTime = #{addtime,jdbcType=DATE},
+      EditTime = #{edittime,jdbcType=DATE},
+      Type = #{type,jdbcType=INTEGER},
+      Content = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.News">
+    update news
+    set 
+    Title =#{title,jdbcType=VARCHAR},
+    Manager = #{manager,jdbcType=VARCHAR},
+      AddTime = #{addtime,jdbcType=DATE},
+      EditTime = #{edittime,jdbcType=DATE},
+      Type = #{type,jdbcType=INTEGER},
+      Content = #{content,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>             

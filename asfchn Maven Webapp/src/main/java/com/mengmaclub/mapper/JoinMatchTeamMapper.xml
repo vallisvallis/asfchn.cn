@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengmaclub.mapper.JoinMatchTeamMapper">
+  <resultMap id="BaseResultMap" type="com.mengmaclub.model.JoinMatchTeam">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TeamName" jdbcType="VARCHAR" property="teamname" />
+    <result column="BlongTeam" jdbcType="INTEGER" property="blongteam" />
+    <result column="BlongTeamName" jdbcType="VARCHAR" property="blongteamname" />
+    <result column="AddTime" jdbcType="DATE" property="addtime" />
+    <result column="Prop1" jdbcType="VARCHAR" property="prop1" />
+    <result column="IsConfirm" jdbcType="INTEGER" property="isconfirm" />
+    <result column="PeopleId" jdbcType="VARCHAR" property="peopleid" />
+    <result column="matchid" jdbcType="INTEGER" property="matchid" />
+    <result column="matchname" jdbcType="VARCHAR" property="matchname" />
+    <result column="teamRank" jdbcType="INTEGER" property="teamrank" />
+    <result column="teamScore" jdbcType="INTEGER" property="teamscore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TeamName, BlongTeam, BlongTeamName, AddTime, Prop1, IsConfirm, PeopleId, matchid, 
+    matchname,teamrank,teamscore
+  </sql>
+  <select id="findMyTeamWhichIsYes" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where (IsConfirm = 2) and (BlongTeam=#{blongteam,jdbcType=INTEGER})
+  </select>
+  <select id="findMyteamInthisMatch" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where BlongTeam=#{blongteam,jdbcType=INTEGER}
+  </select>
+  <select id="findAllWhichIsNo" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where IsConfirm = 1 or IsConfirm=7
+  </select>
+  <select id="findAllWhichIsYes" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where IsConfirm = 2
+  </select>
+  <select id="findAllWhichIsYesin18"  resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where IsConfirm = 2 and matchid=21
+  </select>
+  <select id="findthismatchteam" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team where IsConfirm = 2 and matchid=#{matchid,jdbcType=INTEGER}
+  
+  </select>
+  
+  <select id="findAll" resultType="com.mengmaclub.model.JoinMatchTeam">
+  select * from join_match_team
+  </select>
+  <select id="showIdWhoNotConfirm" resultType="java.lang.Integer">
+  select id from join_match_team  where IsConfirm !=2
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from join_match_team
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from join_match_team
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mengmaclub.model.JoinMatchTeam">
+    insert into join_match_team (ID, TeamName, BlongTeam, 
+      BlongTeamName, AddTime, Prop1, 
+      IsConfirm, PeopleId, matchid, 
+      matchname,teamrank,teamscore)
+    values (#{id,jdbcType=INTEGER}, #{teamname,jdbcType=VARCHAR}, #{blongteam,jdbcType=INTEGER}, 
+      #{blongteamname,jdbcType=VARCHAR}, #{addtime,jdbcType=DATE}, #{prop1,jdbcType=VARCHAR}, 
+      #{isconfirm,jdbcType=INTEGER}, #{peopleid,jdbcType=VARCHAR}, #{matchid,jdbcType=INTEGER}, 
+      #{matchname,jdbcType=VARCHAR},#{teamrank,jdbcType=INTEGER},#{teamscore,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mengmaclub.model.JoinMatchTeam">
+    insert into join_match_team
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="teamname != null">
+        TeamName,
+      </if>
+      <if test="blongteam != null">
+        BlongTeam,
+      </if>
+      <if test="blongteamname != null">
+        BlongTeamName,
+      </if>
+      <if test="addtime != null">
+        AddTime,
+      </if>
+      <if test="prop1 != null">
+        Prop1,
+      </if>
+      <if test="isconfirm != null">
+        IsConfirm,
+      </if>
+      <if test="peopleid != null">
+        PeopleId,
+      </if>
+      <if test="matchid != null">
+        matchid,
+      </if>
+      <if test="matchname != null">
+        matchname,
+      </if>
+      <if test="teamrank != null">
+        teamrank,
+      </if>
+      <if test="teamscore != null">
+        teamscore,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="teamname != null">
+        #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="blongteam != null">
+        #{blongteam,jdbcType=INTEGER},
+      </if>
+      <if test="blongteamname != null">
+        #{blongteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=DATE},
+      </if>
+      <if test="prop1 != null">
+        #{prop1,jdbcType=VARCHAR},
+      </if>
+      <if test="isconfirm != null">
+        #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="peopleid != null">
+        #{peopleid,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="matchname != null">
+        #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="teamrank != null">
+        #{teamrank,jdbcType=INTEGER},
+      </if>
+      <if test="teamscore != null">
+        #{teamscore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mengmaclub.model.JoinMatchTeam">
+    update join_match_team
+    <set>
+      <if test="teamname != null">
+        TeamName = #{teamname,jdbcType=VARCHAR},
+      </if>
+      <if test="blongteam != null">
+        BlongTeam = #{blongteam,jdbcType=INTEGER},
+      </if>
+      <if test="blongteamname != null">
+        BlongTeamName = #{blongteamname,jdbcType=VARCHAR},
+      </if>
+      <if test="addtime != null">
+        AddTime = #{addtime,jdbcType=DATE},
+      </if>
+      <if test="prop1 != null">
+        Prop1 = #{prop1,jdbcType=VARCHAR},
+      </if>
+      <if test="isconfirm != null">
+        IsConfirm = #{isconfirm,jdbcType=INTEGER},
+      </if>
+      <if test="peopleid != null">
+        PeopleId = #{peopleid,jdbcType=VARCHAR},
+      </if>
+      <if test="matchid != null">
+        matchid = #{matchid,jdbcType=INTEGER},
+      </if>
+      <if test="matchname != null">
+        matchname = #{matchname,jdbcType=VARCHAR},
+      </if>
+      <if test="teamrank != null">
+        teamrank = #{teamrank,jdbcType=INTEGER},
+      </if>
+      <if test="teamscore != null">
+        teamscore = #{teamscore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mengmaclub.model.JoinMatchTeam">
+    update join_match_team
+    set TeamName = #{teamname,jdbcType=VARCHAR},
+      BlongTeam = #{blongteam,jdbcType=INTEGER},
+      BlongTeamName = #{blongteamname,jdbcType=VARCHAR},
+      AddTime = #{addtime,jdbcType=DATE},
+      Prop1 = #{prop1,jdbcType=VARCHAR},
+      IsConfirm = #{isconfirm,jdbcType=INTEGER},
+      PeopleId = #{peopleid,jdbcType=VARCHAR},
+      matchid = #{matchid,jdbcType=INTEGER},
+      matchname = #{matchname,jdbcType=VARCHAR},
+      teamrank = #{teamrank,jdbcType=INTEGER},
+      teamscore = #{teamscore,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
