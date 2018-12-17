@@ -35,14 +35,18 @@ import com.mengmaclub.util.DecideSn;
 @RequestMapping("/")
 public class HxPeopleController {
 	@Autowired
-	private HxPeopleService hxPeopleService;
+	private  HxPeopleService hxPeopleService;
 	@Autowired
 	private HxTeamService hxTeamService;
 	
 	
-	
-	
+	//private static List<HxPeople> prohxpeople=null;
 	private DecideSn decideSn;
+	
+	
+	//
+	
+	
 	/**
 	 * 航协页面，显示已交会费的会员
 	 * 
@@ -158,32 +162,23 @@ public String changePeopelStuatsToYesInHx(int id, Model model){
 	public String getAllHxPeople(
 			@RequestParam(value = "pn", defaultValue = "1") Integer pn,
 			Model hxpModel) {
+		//System.out.println("prohxpeople..........size:"+prohxpeople.size());
+	//	int num1=(pn-1)*50;
+	//	int num2=(pn)*50;
+	//	List<HxPeople> hxPeopleWhoPro=hxPeopleService.findinpage(num1, num2);
 		List<HxPeople> hxPeopleWhoPayInHx = hxPeopleService.findWhoFeed();
-		
-		int i = hxPeopleWhoPayInHx.size();
-		
-		hxpModel.addAttribute("hxPeopleWhoPayInHx", i);
-		for (HxPeople hxPeople : hxPeopleWhoPayInHx) {
-			
-			hxPeople.setYearfeestatus(2);
-			hxPeopleService.updateByPrimaryKeySelective(hxPeople);
-		}int num1=(pn-1)*50;
-		int num2=(pn)*50;
+//		
+//		int i = hxPeopleWhoPayInHx.size();
+//		
+		hxpModel.addAttribute("hxPeopleWhoPayInHx", hxPeopleWhoPayInHx.size());
+//		for (HxPeople hxPeople : hxPeopleWhoPayInHx) {
+//			
+//			hxPeople.setYearfeestatus(2);
+//			hxPeopleService.updateByPrimaryKeySelective(hxPeople);
+//		}
+//		
 		PageHelper.startPage(pn, 50);
 		
-		//List<HxPeople> allHxPeople = 
-		// for (HxPeople hxPeople : allHxPeople) {
-		// HxTeam
-		// hxTeam=hxPeopleService.findBelongTeam(hxPeople.getBelongteam());
-		// hxPeople.setTeamname(hxTeam.getFullname());
-		// }
-		//
-		// for (HxPeople hxPeople : allHxPeople) {
-		// HxTeam thisTeam = hxTeamService.selectByPrimaryKey(hxPeople
-		// .getBelongteam());
-		// hxPeople.setTeamname(thisTeam.getFullname());
-		// hxPeopleService.updateByPrimaryKeySelective(hxPeople);
-		// }
 		PageInfo page = new PageInfo(hxPeopleService.findAll(), 50);
 
 		

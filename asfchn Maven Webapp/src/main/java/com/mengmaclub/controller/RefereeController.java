@@ -373,7 +373,6 @@ public class RefereeController {
 		}
 
 		//
-
 		List<JoinMatchTeamPeople> lists = joinMatchTeamPeopleService.findAll();
 		for (JoinMatchTeamPeople joinMatchTeamPeople : lists) {
 			System.out.println(joinMatchTeamPeople.getId());
@@ -3207,25 +3206,87 @@ System.out.println("此项目批次有："+turn);
 		}
 		Collections.sort(twoptionsmatchs);
 		int i = 1;
+		int o=1;
+		int k=1;
+		int a=1;
+		double lastscore=0;
 		for (Twoptionsmatch twoptionsmatch2 : twoptionsmatchs) {
 			if (twoptionsmatchs.size() >= 8) {
-				if (((i <= Math.round((twoptionsmatchs.size() * 0.15))))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
+				if (((o <= Math.round((twoptionsmatchs.size() * 0.15))))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
 					twoptionsmatch2.setReward("一等奖");
-				} else if ((i > Math.round(twoptionsmatchs.size() * 0.15)) &&( i < Math.round((twoptionsmatchs.size() * 0.3)))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
+				} else if ((o > Math.round(twoptionsmatchs.size() * 0.15)) &&( o < Math.round((twoptionsmatchs.size() * 0.3)))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
 					twoptionsmatch2.setReward("二等奖");
 					System.out.println(twoptionsmatch2.getName()+"的排名是"+twoptionsmatch2.getRank()+"二等奖的顶范围是："+Math.round((twoptionsmatchs.size() * 0.3)));
-				} else if ((i > Math.round(twoptionsmatchs.size() * 0.3)) && (i <= Math.round((twoptionsmatchs.size() * 0.6)))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
+				} else if ((o > Math.round(twoptionsmatchs.size() * 0.3)) && (o <= Math.round((twoptionsmatchs.size() * 0.6)))&&(twoptionsmatch2.getFinalscore() !="0.0")) {
 					twoptionsmatch2.setReward("三等奖");
-				} else if (i > Math.round((twoptionsmatchs.size() * 0.6))) {
+				} else if (o > Math.round((twoptionsmatchs.size() * 0.6))) {
 					twoptionsmatch2.setReward("");
 				}
 			}
-			if (!(twoptionsmatch2.getScoreone().equals("弃权")&&twoptionsmatch2.getScoretwo().equals("弃权"))) {
-				twoptionsmatch2.setRank(i);
-				i++;
-			}
+			/*
+			 * 正常排名
+			 */
+//			
+//			if (!(twoptionsmatch2.getScoreone().equals("弃权")&&twoptionsmatch2.getScoretwo().equals("弃权"))) {
+//				if (!(lastscore==Double.parseDouble(twoptionsmatch2.getFinalscore()))) {
+//					/*
+//					 * 不同分数，顺序排
+//					 */
+//					twoptionsmatch2.setRank(i);
+//					k=i;
+//					
+//				}else if(Double.parseDouble(twoptionsmatch2.getFinalscore())==0){
+//					twoptionsmatch2.setRank(i);
+//				}else {
+//					/*
+//					 * 相同分数，与前者一致
+//					 */
+//					twoptionsmatch2.setRank(k);
+//					
+//				}
+//				i++;
+//				
+//				
+//				lastscore=Double.parseDouble(twoptionsmatch2.getFinalscore());
+//				
+//				
+//			}
 			
-			//i++;
+			/*
+			 * 航协要求的排名
+			 */
+			
+			
+			
+			if (!(twoptionsmatch2.getScoreone().equals("弃权")&&twoptionsmatch2.getScoretwo().equals("弃权"))) {
+				if (!(lastscore==Double.parseDouble(twoptionsmatch2.getFinalscore()))) {
+					/*
+					 * 不同分数，顺序排
+					 */
+					twoptionsmatch2.setRank(i);
+					k=i;
+					
+				}else if(Double.parseDouble(twoptionsmatch2.getFinalscore())==0){
+					
+					
+					twoptionsmatch2.setRank(a);
+					
+				}else {
+					/*
+					 * 相同分数，与前者一致
+					 */
+					twoptionsmatch2.setRank(k);
+					
+				}
+				a++;
+				i=k;
+				i++;
+				
+				lastscore=Double.parseDouble(twoptionsmatch2.getFinalscore());
+				
+				
+			}
+		o++;
 			twoptionsMatchService.updateByPrimaryKeySelective(twoptionsmatch2);
 		}
 		twoptionsmatchs = twoptionsMatchService.findWhoJoinThisMatchThisListAndHasConfirm(twoptionsmatch.getJoinmatch(),

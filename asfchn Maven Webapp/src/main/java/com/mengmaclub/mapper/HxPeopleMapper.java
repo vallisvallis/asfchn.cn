@@ -27,7 +27,7 @@ public interface HxPeopleMapper {
 	List<HxPeople> findWhoFeed();
 
 	HxTeam findBelongTeam(int id);
-
+	//List<HxPeople> findPeopleInNum(int num1,int num2);
 	HxPeople findPeopleByName(String peopleName);
 	HxPeople findPeopleByCertNum(String cert);
 	HxPeople findPeopleByNameAndCertNum(String name,String cert);

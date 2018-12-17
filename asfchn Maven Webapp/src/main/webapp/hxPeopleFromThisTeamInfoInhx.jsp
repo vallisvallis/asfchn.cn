@@ -33,7 +33,7 @@
 			<div class="col-sm-12">
 				<div class="ibox float-e-margins">
 					<div class="ibox-title">
-						<h5>${hxTeam.fullname}的会员信息</h5>
+						<h5>${hxTeam.fullname}的会员信息</h5> &nbsp; <a href="${path}/showTeamPeopleInHx?id=${hxTeam.id-1}"><span style="color:red;">上一页</span></a>&nbsp;<a href="${path}/showTeamPeopleInHx?id=${hxTeam.id+1}"><span style="color:red;">下一页</span></a>
 					</div>
 					<div class="ibox-content">
 						<div class="row">

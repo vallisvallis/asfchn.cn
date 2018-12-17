@@ -40,8 +40,9 @@
 		prop1,
 		prop2, prop3, prop4, YearFeePayDate, MatchFeePayDate, ExamFeePayDate
 	</sql>
-	<select id="findinpage"  resultType="com.mengmaclub.model.HxPeople">
-	select * from hx_people limit  ${param1},${param2}
+	
+	<select id="findinpage" parameterType="java.lang.Integer" resultType="com.mengmaclub.model.HxPeople">
+	select * from hx_people limit  ${num1},${num2};
 	</select>
 	
 	<select id="findBySn" parameterType="java.lang.String" resultType="com.mengmaclub.model.HxPeople" >
@@ -88,7 +89,7 @@ select * from hx_people where Name=#{arg0} and CertNumber=#{arg1}
 		SELECT COUNT(ID) FROM hx_people
 	</select>
 	<select id="findAll" resultType="com.mengmaclub.model.HxPeople">
-		select * from hx_people
+		select * from hx_people 
 	</select>
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
 		resultMap="BaseResultMap">
